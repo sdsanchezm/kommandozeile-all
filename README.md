@@ -1,6 +1,13 @@
 # kommandozeile-all
 
-Summary of command Line and helpful tools to improve efficiency and enablers to deploy and abstract even more
+*Description:* Summary of command Line and helpful tools to improve efficiency and enablers to deploy and abstract even more. 
+
+## Table of contents 
+
+[Headers](#headers)  
+
+
+
 ## vim editor
 
 vim Editor commands: 
@@ -200,5 +207,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 
 
+# npm common commands:
 
+1. 
 
