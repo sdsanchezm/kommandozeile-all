@@ -194,6 +194,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 ```
 
 
+# Markdown Cheatsheet
+
+1. [md cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
 
 
 
