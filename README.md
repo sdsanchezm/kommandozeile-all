@@ -32,6 +32,57 @@ vim Editor commands:
 - or: 
 ` :undo 3 `
 
+### plugins and stuff
+
+- This is an example of .vimrc
+```
+syntax on
+
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nu
+set nowrap
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+Plug 'dbeniamine/cheat.sh-vim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'lyuts/vim-rtags'
+Plug 'mbbill/undotree'
+Plug 'colepeters/spacemacs-theme.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+
+call plug#end()
+```
+
+- The repo to get all plugin, is: 
+```
+sh -c 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
+- Instructions at:
+```
+https://github.com/junegunn/vim-plug
+```
+
 
 # From the course:
 
