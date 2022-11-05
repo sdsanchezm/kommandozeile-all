@@ -276,4 +276,24 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 1. https://docs.github.com/en/get-started/quickstart/fork-a-repo
 
 
+# hexedit
+
+- official page: [https://linux.die.net/man/1/hexedit#:~:text=COMMANDS%20(full%20and%20detailed),move%20n%20times%20the%20cursor.](https://linux.die.net/man/1/hexedit#:~:text=COMMANDS%20(full%20and%20detailed),move%20n%20times%20the%20cursor.)[]
+
+- to find:
+	- `/`
+- look for a sector
+	- `[enter]
+- save
+	- F2
+- undo all
+	- Ctrl + u
+- close
+	- Ctrl + c
+- navigate
+	- PgUp and PgDown
+- open with sectors and colors
+	- hexedit -s --color [file]
+
+
 
