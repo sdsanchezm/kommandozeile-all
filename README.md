@@ -295,5 +295,21 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 - open with sectors and colors
 	- hexedit -s --color [file]
 
+##### Adding Repos to Fedora 36:
+
+- The file extension should be `.repo`
+- Commands: 
+	- `dnf config-manager --add-repo repository`
+		- OR
+	-`dnf config-manager --add-repo /etc/yum.repos.d/fedora_extras.repo`
+
+- And then install (or update and install):
+- `sudo dnf install <package-name>`
+
+- In Linux Fedora 36, repos are installed under:
+	- `/etc/yum.repos.d/`
+
+- Source: 
+	- [https://docs.fedoraproject.org/en-US/quick-docs/adding-or-removing-software-repositories-in-fedora/]
 
 
