@@ -314,3 +314,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
   - [https://copr.fedorainfracloud.org/coprs/mbriza/recordmydesktop/]
 
 
+### ytb-dl
+
+- Comman:
+  - `ytb-dl -x --audio-format mp3 vURL`
+
+
