@@ -316,7 +316,14 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 ### ytb-dl
 
-- Comman:
+- Command:
   - `ytb-dl -x --audio-format mp3 vURL`
+
+### ffmpeg mp4 extract mp3 
+
+- Option 1:
+  - `ffmpeg -i video.mp4 -b:a 192K -vn music.mp3`
+  - This option may also work:
+    - `ffmpeg -i filename.mp4 filename.mp3`
 
 
