@@ -328,6 +328,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 ### Regex
 
+- Regex nice documentatioin: [https://jdhao.github.io/2019/02/28/sublime_text_regex_cheat_sheet/]
 - To Replace:
 	- `^([A-Za-z]+)$`
 	- `"$1",`
