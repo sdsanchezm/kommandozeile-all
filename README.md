@@ -326,4 +326,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
   - This option may also work:
     - `ffmpeg -i filename.mp4 filename.mp3`
 
+### Regex
+
+- To Replace:
+	- `^([A-Za-z]+)$`
+	- `"$1",`
 
