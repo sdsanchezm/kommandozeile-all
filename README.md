@@ -128,7 +128,7 @@ https://github.com/junegunn/vim-plug
 - $ awk -F ';' '{ print $1}' nuevasPelis.csv // esto imprime la primera columna
 - $ awk -F ';' 'NR > 1 && $3 > 0 { print $1, $3 * $4 }' nuevasPelis.csv // imprime number row mayor que 1, y columna 3, $3 es mayor que 0, e imprime con esa condicion, la columna 1 ($1) y la columna 3 por la 4 ($ * $4)
 
-## procesamiento de datos
+## Data processing
 
 ### Flujos estandar en la terminal:
 - entrada estandar
@@ -184,9 +184,9 @@ $ killall
 ### usuarios en linux o unix:
 
 u - Owner of the file
-g - Grupos
-o - Otros
-a - todos
+g - Grups
+o - Others
+a - all
 
 ### Operaciones:
 
@@ -274,6 +274,19 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 # Github 
 
 1. https://docs.github.com/en/get-started/quickstart/fork-a-repo
+
+2. Setup a ssh key: [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
+	- $ ssh-keygen -t ed25519 -C "your_favorite_name@example.com"
+	- $ eval "$(ssh-agent -s)"
+	- $ ssh-add ~/.ssh/id_ed25519
+
+3. Make git stop asking for credentials:
+	- git remote set-url origin git@github.com:username/repo.git
+	- git config --global credential.helper store
+	- git config --global credential.helper cache
+
+4. 
+
 
 
 # hexedit
