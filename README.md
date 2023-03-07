@@ -284,6 +284,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- git remote set-url origin git@github.com:username/repo.git
 	- git config --global credential.helper store
 	- git config --global credential.helper cache
+	 - Examples:
+	 	- git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git
+		- git remote set-url origin git@github.com:sdsanchezm/typescript-all.git
 
 4. 
 
