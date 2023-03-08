@@ -281,12 +281,12 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- $ ssh-add ~/.ssh/id_ed25519
 
 3. Make git stop asking for credentials:
-	- git remote set-url origin git@github.com:username/repo.git
-	- git config --global credential.helper store
-	- git config --global credential.helper cache
+	- `git remote set-url origin git@github.com:username/repo.git`
+	- `git config --global credential.helper store`
+	- `git config --global credential.helper cache`
 	 - Examples:
-	 	- git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git
-		- git remote set-url origin git@github.com:sdsanchezm/typescript-all.git
+	 	- `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
+		- `git remote set-url origin git@github.com:sdsanchezm/typescript-all.git` 
 
 4. 
 
