@@ -349,3 +349,23 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- `^([A-Za-z]+)$`
 	- `"$1",`
 
+### oh my zsh
+
+- Link: [https://ohmyz.sh/#install]
+
+### nvm (nodejs management)
+
+- Link: [https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/] 
+- Some commands:
+	- First: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash` or:
+	- `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash` 
+	- Update `~/.zshrc` or `~/.bash_profile`
+	- Export the config:
+		- `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" `
+	- Reload: `source ~/.bashrc` or `source ~/.zshrc`
+
+
+
+
+
