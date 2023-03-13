@@ -366,6 +366,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- Reload: `source ~/.bashrc` or `source ~/.zshrc`
 
 
+### apache 2 in Fedora
 
+- [https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/]
 
 
