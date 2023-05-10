@@ -288,9 +288,13 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	 	- `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
 		- `git remote set-url origin git@github.com:sdsanchezm/typescript-all.git` 
 
-4. 
+4. get the actual list of remotes:
+	- `git remote -v`
+	- `git branch -r`
 
 
+
+	 	- `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
 
 # hexedit
 
