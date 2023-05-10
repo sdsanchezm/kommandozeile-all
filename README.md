@@ -353,6 +353,14 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 - Link: [https://ohmyz.sh/#install]
 
+
+### fish shell
+
+- Documentation: [https://fishshell.com/docs/current/cmds/alias.html]
+- Config alias dir: `~/.config/fish/config.fish`
+- Alias config: `alias p="clear;ls -l;pwd"`
+
+
 ### nvm (nodejs management)
 
 - Link: [https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/] 
