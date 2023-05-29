@@ -292,7 +292,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- `git remote -v`
 	- `git branch -r`
 
-
+5. undo `add` in git:
+    - `git restore --staged pFinal/migrations/0001_initial.py`
 
 	 	- `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
 
