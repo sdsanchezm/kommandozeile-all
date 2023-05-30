@@ -381,6 +381,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 - Documentation
     - [https://reqbin.com/req/c-g5d14cew/curl-post-example]
+    - Great examples: [https://gist.github.com/subfuzion/08c5d85437d5d4f00e58](https://gist.github.com/subfuzion/08c5d85437d5d4f00e58)
 
 
 ### fish shell
