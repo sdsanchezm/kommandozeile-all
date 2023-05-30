@@ -358,6 +358,30 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 - Link: [https://ohmyz.sh/#install]
 
+### curl
+
+- get request:
+    - `curl http://127.0.0.1:8000/test/student/ | json`
+    - previous glbaly install json: `npm install -g json`
+
+- post method:
+    - documentation at: [https://curl.se/docs/httpscripting.html](https://curl.se/docs/httpscripting.html)
+    - `curl --data "birthyear=1905&press=%20OK%20" http://www.example.com/api/someendpoint.cgi`
+    - first send a POST and then GET:
+        - `curl -d score=10 http://example.com/post.cgi --next http://example.com/results.html`
+    - two GET:
+        - `curl http://url1.example.com http://url2.example.com`
+    - two POST:
+        - `curl --data name=curl http://url1.example.com http://url2.example.com`
+
+    - ```curl -X POST https://reqbin.com/echo/post/json 
+       -H "Content-Type: multipart/form-data"
+       -d '[post data]'
+       ```
+
+- Documentation
+    - [https://reqbin.com/req/c-g5d14cew/curl-post-example]
+
 
 ### fish shell
 
