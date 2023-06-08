@@ -409,3 +409,41 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 - [https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/]
 
 
+### oh-my-posh Powershell and windows Terminal
+
+- install Powershell:
+	- Get it: [https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3)
+
+- Install Windows Terminal:
+	- Get it: [https://github.com/microsoft/terminal/releases](https://github.com/microsoft/terminal/releases)
+
+- New Colors: 
+	- General: [https://windowsterminalthemes.dev/](https://windowsterminalthemes.dev/)
+	- Dracula dark theme: [https://draculatheme.com/windows-terminal](https://draculatheme.com/windows-terminal)
+	- Material Theme: [https://github.com/julianlatest/material-windows-terminal](https://github.com/julianlatest/material-windows-terminal)
+	- to install: in WT > Settings > Open Json
+
+- Nerd fonts:
+	- fonts: [https://github.com/ryanoasis/nerd-fonts/](https://github.com/ryanoasis/nerd-fonts/)
+	- Releases: [https://github.com/ryanoasis/nerd-fonts/releases](https://github.com/ryanoasis/nerd-fonts/releases)
+	- extract qand instal in windows
+
+- Oh-My-Posh:
+	- Oh my posh site: [https://ohmyposh.dev/docs/](https://ohmyposh.dev/docs/)
+	- (make sure winget is installed)
+	- To Install `winget install JanDeDobbeleer.OhMyPosh -s winget`
+	- to update: [winget upgrade JanDeDobbeleer.OhMyPosh -s winget]
+	- Enable the defaul setup `oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json"`
+		- The result after this can be run to get the theme
+	- Run `Get-PoshThemes` to get themes and examples and instructions in what ps1 variable should change
+	- Include the name of the theme under `C:\Users\ss\Documents\PowerShell` 
+		- It should look like this: 
+		```
+		& ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\blue-owl.omp.json" --print) -join "`n"))
+		```
+	- get the shell what you are in: `oh-my-posh get shell`
+	- Edit the profile script: `notepad $PROFILE`
+		- If the above error, then `New-Item -Path $PROFILE -Type File -Force`
+	- To Reaload: `. $PROFILE`
+	- Path to themes: `C:\Users\<uruser>\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json` or `$env:POSH_THEMES_PATH` (and press enter)
+	- pass
