@@ -297,6 +297,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 	 	- `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
 
+6. restore previously added file:
+	- `$ git restore --staged directory_uild/maininUnit/.vscode/`
+
 # hexedit
 
 - official page: [https://linux.die.net/man/1/hexedit#:~:text=COMMANDS%20(full%20and%20detailed),move%20n%20times%20the%20cursor.](https://linux.die.net/man/1/hexedit#:~:text=COMMANDS%20(full%20and%20detailed),move%20n%20times%20the%20cursor.)[]
