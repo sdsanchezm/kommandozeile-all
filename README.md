@@ -449,4 +449,12 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 		- If the above error, then `New-Item -Path $PROFILE -Type File -Force`
 	- To Reaload: `. $PROFILE`
 	- Path to themes: `C:\Users\<uruser>\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json` or `$env:POSH_THEMES_PATH` (and press enter)
-	- pass
+- wget like in posh:
+	- Example:
+	```
+	$client = new-object System.Net.WebClient
+	$client.DownloadFile("http://www.example.com/file.txt","C:\temp\file.txt")
+	or
+	(new-object System.Net.WebClient).DownloadFile('http://www.example.com/file.txt','C:\temp\file.txt')
+	```
+- pass
