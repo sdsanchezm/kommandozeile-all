@@ -458,3 +458,34 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	(new-object System.Net.WebClient).DownloadFile('http://www.example.com/file.txt','C:\temp\file.txt')
 	```
 - pass
+
+### Docker
+
+- this is a structure basic of the `.dockerignore` file
+```
+**/.env
+**/.classpath
+**/.git
+**/.gitignore
+**/.settings
+**/.project
+**/.toolstarget
+**/.vs
+**/.vscode
+**/*.*proj.user
+**/*.dbmdl
+**/*.jfm
+**/.dockerignore
+**/Dockerfile*
+**/obj
+**/bin
+**/charts
+**/docker-compose*
+**/node_modules
+**/secrets.dev.yaml
+**/npm-debug.log
+**/azds.yaml
+**/values.dev.yaml
+LICENSE
+README.md
+```
