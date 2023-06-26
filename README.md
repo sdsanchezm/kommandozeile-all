@@ -381,6 +381,14 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
        -H "Content-Type: multipart/form-data"
        -d '[post data]'
        ```
+	- code
+   	```
+	curl -X POST -H "Content-Type: application/json" -d '{
+	    "name": "John Doe",
+	    "schools": [1, 2, 3]
+	}' http://localhost:8000/teachers/
+
+    	```
 
 - Documentation
     - [https://reqbin.com/req/c-g5d14cew/curl-post-example]
