@@ -241,9 +241,9 @@ The nameserver can also be manually entered in the interface configuration file 
 ### 1. identify
 
 - List of devices:
-	`davs@thisisaunixmachine:~$ ip link`
-	`davs@thisisaunixmachine:~$ ip link | grep “: en”``
-	`ip link | grep ": et"`
+	- `davs@thisisaunixmachine:~$ ip link`
+	- `davs@thisisaunixmachine:~$ ip link | grep “: en”`
+	- `ip link | grep ": et"`
 
 - disconnect
 	`davs@thisisaunixmachine:~$ sudo ip link set eno1 down`
@@ -261,29 +261,65 @@ The nameserver can also be manually entered in the interface configuration file 
 
 ### Local configuration
 
+- check active connections and related devices:
+	- `davs@thisisaunixmachine$ nmcli con sho -a`
+	
+- check the dhcp of an specific cionnection/server
+	`davs@thisisaunixmachine$ nmcli con sho ubuntu8main | grep "^DHCP4"`
 
-`davs@thisisaunixmachine$ nmcli con sho -a`
+- put the connection down:
+	- `davs@thisisaunixmachine$ nmcli con down id ubuntu8main`
+	
+- check again the status
+	`davs@thisisaunixmachine$ nmcli con sho ubuntu8main| grep "^DHCP4"`
 
-`davs@thisisaunixmachine$ nmcli con sho centos9stream | grep "^DHCP4"`
+- put the connection up:
+	`davs@thisisaunixmachine$ nmcli con up id ubuntu8main`
 
-davs@thisisaunixmachine$ nmcli con down id centos9stream`
+- check connection again:
+	`davs@thisisaunixmachine$ nmcli con sho ubuntu8main | grep "^DHCP4"|grep expiry`
 
-`davs@thisisaunixmachine$ nmcli con sho centos9stream| grep "^DHCP4"`
-
-`davs@thisisaunixmachine$ nmcli con up id centos9stream`
-
-`davs@thisisaunixmachine$ nmcli con sho centos9stream | grep "^DHCP4"|grep expiry`
 
 
 ### using isc dhcp client
 
-$ sudo dhclient -v eno1
+- 
+	`sudo dhclient -v eno1`
 
-$ cat /var/lib/dhclient/dhclient.leases
+- check the directory `/var/lib/dhclient/dhclient.leases` to see If the DHCP client is being used:
+	`$ cat /var/lib/dhclient/dhclient.leases`
+	- or the temp var: `PATH_DHCLIENT_DB`
+	-
+	```
+	default-duid "\001\002>n\1357.\326J;\262,\322\343\271\018\341\341";
+	lease {
+	  interface "enp1";
+	  fixed-address 183.156.0.152;
+	  option subnet-mask 255.255.255.0;
+	  option time-offset -19000;
+	  option routers 183.156.0.1;
+	  option dhcp-lease-time 22600;
+	  option dhcp-message-type 5;
+	  option domain-name-servers 183.156.0.1;
+	  option dhcp-server-identifier 183.156.0.1;
+	  option domain-name "example.com";
+	  renew 3 2023/1/03 13:10:33;
+	  rebind 4 2023/1/04 13:37:33;
+	  expire 4 2023/1/04 13:22:33;
+	}
+	```
+	- the result could be:
 
-$ sudo ip address show
+	---|---
+	ip address | 183.156.0.152
+	netmask | option subnet-mask 255.255.255.0
+	default route | option routers 183.156.0.1
+	name server | option domain-name-servers 183.156.0.1;
 
-$ sudo ip a
+
+- Verify the ip and netmask:
+	`$ sudo ip address show`
+	`$ sudo ip a`
 
 
 ### Local connections check
@@ -315,27 +351,36 @@ $ sudo ip a
 
 #### daemons check
 
-davs@thisisaunixmachine>~$ sudo systemctl
-
-davs@thisisaunixmachine>~$ sudo systemctl status netdata.service
+- check daemons in general
+	`davs@thisisaunixmachine>~$ sudo systemctl`
+	`davs@thisisaunixmachine>~$ sudo systemctl status netdata.service`
 
 
 #### Verify the correct port is open
 
-
-davs@thisisaunixmachine>~$ sudo ss -tlap
-
-davs@thisisaunixmachine>~$ sudo ss -tlapn
-
-davs@thisisaunixmachine>~$ curl http://127.0.0.1:631 | head
-
-davs@thisisaunixmachine>~$ curl http://127.0.0.1:19999 | head
+- See actual sockets of the application: 
+	`davs@thisisaunixmachine>~$ sudo ss -tlap`
+	+ `-t` tcp sockets
+	+ `-l` listening sockets (waiting for incoming conn)
+	+ `-a` all sockets  
+	+ `-p` PID and process name 
+- same but with `-n`
+	`davs@thisisaunixmachine>~$ sudo ss -tlapn`
+	+ `-n` port numbers
+- make a get request to validate
+	`davs@thisisaunixmachine>~$ curl http://127.0.0.1:631 | head`
+- get request to validate connection
+	`davs@thisisaunixmachine>~$ curl http://127.0.0.1:19999 | head`
 
 
 #### Firewall check
 
-davs@thisisaunixmachine>~$ sudo iptables -vnL
+- `davs@thisisaunixmachine>~$ sudo iptables -vnL`
 
+- iptables
+	+ iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall
+- ufw, uncomplicated firewall (ubuntu) [https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04]
+- netfilter, firewall inside the kernel
 
 
 ## Sudoers
@@ -343,7 +388,6 @@ davs@thisisaunixmachine>~$ sudo iptables -vnL
 - command
 	+ `davs@thisisaunixmachine>~$ sudo cat /etc/sudoers`
 	+ `davs@thisisaunixmachine>~$ sudo cat /etc/sudoers.d/davs`
-
 
 - passwd
 	+ `davs@thisisaunixmachine>~$ head -n 3 /etc/passwd`
@@ -356,47 +400,61 @@ davs@thisisaunixmachine>~$ sudo iptables -vnL
 	+ `chage -l user`
 	
 
-- 421 > rwx >>
-	+ 7: 4+2+1 = 7 (rwx)
-	+ 6: 4+2+0 = 6 (rw-)
-	+ 5: 4+0+1 = 5 (r-x)
-	+ 4: 4+0+0 = 4 (r--)
+- Files permissions, discretionary Access Control (DAC) and Access Control Lists (ACL). 
+- ACL: 
+	+ 421 > rwx >>
+		* 7: 4+2+1 = 7 (rwx)
+		* 6: 4+2+0 = 6 (rw-)
+		* 5: 4+0+1 = 5 (r-x)
+		* 4: 4+0+0 = 4 (r--)
+		
 	
+	+ types (the first position):
+		+ "-" regular file type
+		+ "d" directory entry type
+		+ "l" soft link type
+		+ "c" character device type
+		+ "b" block device type
+		+ "p" named pipe type
+		+ "s" socket type
 
-- types (the first position):
-	- "-" regular file type
-	- "d" directory entry type
-	- "l" soft link type
-	- "c" character device type
-	- "b" block device type
-	- "p" named pipe type
-	- "s" socket type
+	+ permissions apply in order, for example: 
+		* `chmod 722 a.txt` // add rwx -w- -w-
+		* `chmod o+x a.txt` // add execution capabilities to the others
 
-- permissions apply in order, for example: -
+	- find inode information of a file
+		+ `stat a.txt`
+		+ `stat -c '%U' a.txt` // find the username of the owner
+		+ `stat -c '%u' a.txt` // find the user id of the owner
+		+ `stat -c '%G' a.txt` // find the groupname of the owner
+		+ `stat -c '%g' a.txt` // find the group id of the owner
 
-
-- ACL
+- ACL Permissions
 	+ `getfacl`
 	+ `setfacl`
 
-- encryption
-	+ `cryptsetup`
+	- encryption
+		+ `cryptsetup`
+
+	- Example setting of ACL (Access Control list)
+		`setfacl -d -m accounting:rwx /finance`
+
+	- Setting jamecho access to the /finance folder:
+		`setfacl -m jamecho:r-x /finance`
+
+			```
+				Getfacl c.txt
+				Touch c.txt
+				Getfacl c.txt
+			```
+	Example getting:
+		+ `getfacl /finance`
+	
+- Sticky bit (prevent deletion of a folder, after `ll` it shows a t at the end):
+	+ `chmod o+t /opt/dump/`
+	+ `chmod +t /opt/dump/`
 	
 
-- Example setting of ACL (Access Control list)
-	`setfacl -d -m accounting:rwx /finance`
-
-- Setting jamecho access to the /finance folder:
-	`setfacl -m jamecho:r-x /finance`
-
-		```
-			Getfacl c.txt
-			Touch c.txt
-			Getfacl c.txt
-		```
-
-Example getting:
-	+ `getfacl /finance`
 
 
 ### Firewalls
@@ -517,11 +575,60 @@ Example getting:
 - to connect:
 	+ `ssh -p 222 jamecho@<ip>`
 	+ type password
-- 
 
 
+### Virtualization
+
+- libvirt is an open-source API, daemon and management tool for managing platform virtualization. It can be used to manage KVM, Xen, VMware ESXi, QEMU and others. these APIs are widely used in the orchestration of hypervisors in the development of a cloud-based solution
+
+- The virtual shell, or virsh, is a flexible command-line utility for managing virtual machines (VMs) controlled by libvirt.
+
+- VMM, Virtual Machine Manager, also known as virt-manager, is a graphical tool for creating and managing guest virtual machines.
 
 
+### Git
+
+
+- Initialize git (locally) the correct way:
+ 
+- `git init .`
+- `git commit --allow-empty -m "Initial commit"`
+ 
+- the default name is in field "init.defaultbranch=main" in:
+	`git config -l`
+ 
+- Check the config list:
+	`git config --list`
+ 
+ 
+- Create a new branch
+ 
+	`git branch branch1`
+ 
+- List all branches and check where are now
+	`git branch -l`
+	`git branch --list`
+ 
+- Change branch
+	`git checkout main`
+	`git checkout branch1`
+ 
+- Create and change branch in 1 command
+	`git checkout -b my-new-branch`
+ 
+	`$ git config --global user.name "sdsanchezm" (sdsanchezm is my name)`
+	`$ git config --global user.email "mySuperEmailExample@example.com" `
+ 
+ 
+- Change owner and group of a file: 
+	```
+	sudo chown 1001:1002 example.txt
+	sudo chown username example.txt
+	sudo chgrp groupname example.txt
+	sudo chown aspen:seamus /var/opt/test
+	```
+ 
+- The ".git" folder in a repository represents the local repository itself, not the staging area.
 
 
 
@@ -547,3 +654,4 @@ Example getting:
 - - [https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/]
 - *[Good one]* [https://www.linuxcapable.com/how-to-install-apache-httpd-on-fedora-linux/]
 - iptables [https://www.redhat.com/sysadmin/iptables]
+- Server Less [https://www.cloudflare.com/learning/serverless/what-is-serverless/]
