@@ -128,6 +128,16 @@ https://github.com/junegunn/vim-plug
 - $ awk -F ';' '{ print $1}' nuevasPelis.csv // esto imprime la primera columna
 - $ awk -F ';' 'NR > 1 && $3 > 0 { print $1, $3 * $4 }' nuevasPelis.csv // imprime number row mayor que 1, y columna 3, $3 es mayor que 0, e imprime con esa condicion, la columna 1 ($1) y la columna 3 por la 4 ($ * $4)
 
+### user linux
+
+- Change owner and group of a file: 
+	```sh
+		sudo chown 1001:1002 example.txt
+		sudo chown username example.txt
+		sudo chgrp groupname example.txt
+		sudo chown aspen:seamus /var/opt/test
+	```
+
 ## Data processing
 
 ### Flujos estandar en la terminal:
@@ -299,6 +309,36 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 6. restore previously added file:
 	- `$ git restore --staged directory_uild/maininUnit/.vscode/`
+
+### Initialize git (locally) the correct way
+ 
+- `git init .`
+- `git commit --allow-empty -m "Initial commit"`
+ 
+- the default name is in field "init.defaultbranch=main" in:
+	`git config -l`
+ 
+- Check the config list:
+	`git config --list`
+ 
+- Create a new branch
+	`git branch branch1`
+ 
+- List all branches and check where are now
+	`git branch -l`
+	`git branch --list`
+ 
+- Change branch
+	`git checkout main`
+	`git checkout branch1`
+ 
+- Create and change branch in 1 command
+	`git checkout -b my-new-branch`
+	`$ git config --global user.name "sdsanchezm" (sdsanchezm is my name)`
+	`$ git config --global user.email "mySuperEmailExample@example.com" `
+  
+- The ".git" folder in a repository represents the local repository itself, not the staging area.
+
 
 # hexedit
 
