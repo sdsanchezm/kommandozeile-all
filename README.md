@@ -483,7 +483,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- Oh my posh site: [https://ohmyposh.dev/docs/](https://ohmyposh.dev/docs/)
 	- (make sure winget is installed)
 	- To Install `winget install JanDeDobbeleer.OhMyPosh -s winget`
-	- to update: [winget upgrade JanDeDobbeleer.OhMyPosh -s winget]
+	- to update: `winget upgrade JanDeDobbeleer.OhMyPosh -s winget`
 	- Enable the defaul setup `oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json"`
 		- The result after this can be run to get the theme
 	- Run `Get-PoshThemes` to get themes and examples and instructions in what ps1 variable should change
@@ -505,7 +505,24 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	or
 	(new-object System.Net.WebClient).DownloadFile('http://www.example.com/file.txt','C:\temp\file.txt')
 	```
-- pass
+
+- Install fonts (must be admin):
+	- `oh-my-posh font install`
+
+- directory, (cariable $PROFILE)
+	- `C:\Users\thereisalotofrice\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`
+
+- ps1 file:
+	- \"& ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\unicorn.omp.json" --print) -join "`n"))\"
+
+- variable `$env:POSH_THEMES_PATH`
+	- value: `C:\Users\ss\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json`
+
+- theme name: `unicorn.omp.json`
+	- in folder `posh-theme` in this repo
+
+
+
 
 ### Docker
 
