@@ -521,6 +521,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 - theme name: `unicorn.omp.json`
 	- in folder `posh-theme` in this repo
 
+- font: `FiraCode Nerd Font`
+
 
 
 
