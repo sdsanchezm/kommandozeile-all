@@ -296,7 +296,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- `git config --global credential.helper cache`
 	 - Examples:
 	 	- `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
-		- `git remote set-url origin git@github.com:sdsanchezm/typescript-all.git` 
+		- `git remote set-url origin git@github.com:sdsanchezm/typescript-all.git`
+	- List all config:
+		- `git config --list --show-origin`
+		- `git config --list`
 
 4. get the actual list of remotes:
 	- `git remote -v`
