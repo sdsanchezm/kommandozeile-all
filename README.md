@@ -527,6 +527,15 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 - font: `FiraCode Nerd Font`
 
 
+### wget
+
+- wget all files in a folder:
+	- `wget -r -nH --cut-dirs=1 --no-parent --reject "index.html*" https://example.com/some/folder/my/dir-1/`
+		- `-r`: recursive
+		- `-nH`: avoid creating a host directory
+		- `--cut-dirs=1`: ignore the first directory folder in the url
+		- `--no-parent`: avoid ascending to parent dir
+		- `--reject "index.html*"`: exclude the "index.html*" file
 
 
 ### Docker
