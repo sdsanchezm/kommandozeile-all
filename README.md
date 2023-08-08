@@ -331,6 +331,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 6. restore previously added file:
     - `$ git restore --staged directory_uild/maininUnit/.vscode/`
+    - Restore not stated file:
+        - `git restore <file>`
 
 ### Initialize git (locally) the correct way
 
