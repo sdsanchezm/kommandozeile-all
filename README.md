@@ -334,6 +334,16 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - Restore not stated file:
         - `git restore <file>`
 
+7. to show you the difference between that COMMIT's ancestor and the COMMIT
+    - `git diff COMMIT~ COMMIT`
+    - To show the COMMITs data
+        - `git show COMMIT`
+    - simply to show waht will be included (**before push**)
+        - `git show`
+
+(also git diff COMMIT
+
+
 ### Initialize git (locally) the correct way
 
 -   `git init .`
@@ -361,6 +371,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     `$ git config --global user.name "sdsanchezm" (sdsanchezm is my name)`
     `$ git config --global user.email "mySuperEmailExample@example.com" `
 -   The ".git" folder in a repository represents the local repository itself, not the staging area.
+
+
 
 # hexedit
 
