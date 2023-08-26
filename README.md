@@ -497,6 +497,33 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 -   [https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/]
 
+### Fedora Linux Network Manager (DOWN and UP) restarting a Net interface)
+
+- Install net-tools
+	- `$ sudo dnf install net-tools`
+- validate adapter name
+	- `$ ifconfig`
+	- `$ ip link`
+	- `ip a`
+	- `$ ifconfig enp0s3` // `enp0s3` is the adapter name in this case
+
+- Put it down
+	- `$ ifconfig enp0s3 down`
+- validate
+	- `$ ip a`
+	- `$ ifconfig enp0s3` 
+	- `$ ip link` // it should say `state DOWN`
+- Put it up (might need sudo)
+	- `$ ifconfig enp0s3 up`
+- validate
+	- `$ ip a`
+	- `$ ifconfig enp0s3` 
+	- `$ ip a | grep -A 1 "enp0s3"` 
+	- `$ ip link` // it should say `state UP`
+- Validate Network daemon
+	- `$ systemctl status NetworkManager`
+    
+
 ### oh-my-posh Powershell and windows Terminal
 
 -   install Powershell:
