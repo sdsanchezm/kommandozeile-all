@@ -341,7 +341,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - simply to show waht will be included (**before push**)
         - `git show`
 
-(also git diff COMMIT
+    - also `git diff COMMIT`
+
+8. return the initial state before making changes (careful)
+    - `git checkout -- .`
 
 
 ### Initialize git (locally) the correct way
