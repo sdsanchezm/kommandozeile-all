@@ -343,8 +343,13 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
     - also `git diff COMMIT`
 
-8. return the initial state before making changes (careful)
+8. return the initial state before making changes (careful, no undo)
     - `git checkout -- .`
+
+9. list files commited so far
+    - `git ls-tree --name-only -r <branch_name>`
+    - `git ls-tree --name-only <branch> <dir>`
+        - example: `git ls-tree --name-only main ./`
 
 
 ### Initialize git (locally) the correct way
