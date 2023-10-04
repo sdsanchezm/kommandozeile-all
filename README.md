@@ -647,3 +647,36 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 LICENSE
 README.md
 ```
+
+
+### dos2unix and unix2dos
+
+- `dos2unix` transforms from \r ending to \n ending (codification for ending files in unix)
+- `unix2dos` transforms from \n ending to \r ending (codification for ending files in win)
+
+
+## SSH Server 
+
+- sources: 
+    - [https://linuxconfig.org/how-to-install-start-and-connect-to-ssh-server-on-fedora-linux]
+    - [https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/infrastructure-services/OpenSSH/]
+    - [https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server]
+
+- // install openssh server
+    - `sudo dnf install openssh-server`
+
+- // edit port 
+- // uncomment line
+`nvim /etc/ssh/sshd_config`
+
+- // check
+    - `sudo systemctl enable sshd`
+    - `sudo systemctl start sshd`
+    - `sudo systemctl status sshd`
+    - `sudo ss -lt`
+
+- // connect
+    - `ssh username@fedora-ip-or-hostname`
+
+#### SCP 
+- `scp ./data.txt kraus@192.168.100.123:/home/kraus/`
