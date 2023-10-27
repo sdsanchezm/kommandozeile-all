@@ -65,3 +65,18 @@
 
         10. **For help:**:
             - `--help` or `az <command> --help`
+
+## VMs
+
+### CLI
+
+- Create a VM in a Resource Group:
+    ```
+    az vm create --resource-group SuperRG1 --name vm1 --public-ip-sku Standard --image Ubuntu2204 --admin-username azureuser1 --generate-ssh-keys
+    ```
+- Configure nginx:
+    ```
+    az vm extension set --resource-group SuperRG1 --vm-name vm1 --name customScript --publisher Microsoft.Azure.Extensions --version 2.1 --settings '{"fileUris":["https://raw.githubusercontent.com/MicrosoftDocs/mslearn-welcome-to-azure/master/configure-nginx.sh"]}' --protected-settings '{"commandToExecute": "./configure-nginx.sh"}'
+    ```
+
+
