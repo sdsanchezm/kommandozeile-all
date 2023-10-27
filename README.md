@@ -464,20 +464,118 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
         -   `curl --data name=curl http://url1.example.com http://url2.example.com`
 
-    -   ```curl -X POST https://reqbin.com/echo/post/json
-         -H "Content-Type: multipart/form-data"
-         -d '[post data]'
+    -   ```
+            curl -X POST https://reqbin.com/echo/post/json
+            -H "Content-Type: multipart/form-data"
+            -d '[post data]'
         ```
     -   code
         ```
-        curl -X POST -H "Content-Type: application/json" -d '{
-        "name": "John Doe",
-        "schools": [1, 2, 3]
-        }' http://localhost:8000/teachers/
-
+            curl -X POST -H "Content-Type: application/json" -d '{
+            "name": "John Doe",
+            "schools": [1, 2, 3]
+            }' http://localhost:8000/teachers/
         ```
 
+- Summary of the most used/important/relevant CURL commands:
+
+    1. **Sending a GET Request**:
         ```
+        curl https://example.com
+        ```
+    This command sends a GET request to the specified URL and prints the response to the console.
+
+    2. **Sending a POST Request**:
+        ```
+        curl -X POST -d "key1=value1&key2=value2" https://example.com
+        ```
+    Use this command to send a POST request with data to a web server.
+
+    3. **Adding Headers**:
+        ```
+        curl -H "Authorization: Bearer <token>" https://example.com
+        ```
+        Can add custom headers to your HTTP request, such as authorization headers.
+
+    4. **Downloading a File**:
+        ```
+        curl -O https://example.com/file.zip
+        ```
+        This command downloads a file from the given URL and saves it with the same name locally.
+
+    5. **Following Redirects**:
+        ```
+        curl -L https://example.com
+        ```
+        Use the `-L` option to instruct `curl` to follow redirects to their final destination.
+
+    6. **Output to a File**:
+        ```
+        curl -o output.html https://example.com
+        ```
+        Save the content of the URL to a local file with a specific name.
+
+    7. **Uploading a File**:
+        ```
+        curl -F "file=@localfile.txt" https://example.com/upload
+        ```
+        Upload a local file to a server using a multipart form POST request.
+
+    8. **Authentication**:
+        ```
+        curl --user username:password https://example.com
+        ```
+        Include basic authentication credentials in your request.
+
+    9. **Set a Timeout**:
+        ```
+        curl --connect-timeout 10 https://example.com
+        ```
+        Specify a maximum time for the request to complete.
+
+    10. **Verbose Output**:
+        ```
+        curl -v https://example.com
+        ```
+        Get detailed verbose output, including request and response headers.
+
+    11. **Ignore SSL Certificate Errors**:
+        ```
+        curl -k https://example.com
+        ```
+        Use the `-k` option to ignore SSL certificate verification (not recommended for production use).
+
+    12. **HTTP PUT Request**:
+        ```
+        curl -X PUT -d "data" https://example.com/resource
+        ```
+        Send an HTTP PUT request with data to update a resource.
+
+    13. **HTTP DELETE Request**:
+        ```
+        curl -X DELETE https://example.com/resource
+        ```
+        Send an HTTP DELETE request to delete a resource.
+
+    14. **Performing Multiple Requests**:
+        ```
+        curl -sS "url1" -o "file1" "url2" -o "file2"
+        ```
+        Execute multiple requests in a single command.
+
+    15. **Testing API Endpoints**:
+        ```
+        curl -X GET https://api.example.com/endpoint
+        ```
+        Useful for testing and troubleshooting APIs.
+
+    16. **Using a Proxy**:
+        ```
+        curl -x proxy-server:port https://example.com
+        ```
+        Send requests through a proxy server.
+
+        
 
 -   Documentation
     -   [https://reqbin.com/req/c-g5d14cew/curl-post-example]
