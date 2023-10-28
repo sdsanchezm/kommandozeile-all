@@ -1,5 +1,10 @@
 # Azure relevant work documentation
 
+## Azure quick start templates:
+
+- [https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web]
+
+
 ## az commands:
 
 - [https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest]
