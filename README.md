@@ -97,6 +97,15 @@ sh -c 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubuserco
 https://github.com/junegunn/vim-plug
 ```
 
+### LazyVim 
+
+- [https://www.lazyvim.org/installation]
+- [https://github.com/LazyVim/starter]
+- quick start:
+    - `git clone https://github.com/LazyVim/starter ~/.config/nvim`
+    - `rm -rf ~/.config/nvim/.git`
+    - `nvim`
+
 # From the course:
 
 ##
