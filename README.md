@@ -4,7 +4,52 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
 
 ## Table of contents
 
-[Headers](#headers)
+## Table of Contents
+
+## Table of Contents
+
+- [kommandozeile-all](#kommandozeile-all)
+  - [Table of contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
+  - [vim editor](#vim-editor)
+    - [plugins and stuff](#plugins-and-stuff)
+    - [LazyVim ](#lazyvim-)
+- [From the course:](#from-the-course)
+  - [### utilidades batch:](#-utilidades-batch)
+    - [utilidades batch avanzadas:](#utilidades-batch-avanzadas)
+    - [sed](#sed)
+    - [awk](#awk)
+    - [user linux](#user-linux)
+  - [Data processing](#data-processing)
+    - [Flujos estandar en la terminal:](#flujos-estandar-en-la-terminal)
+    - [usuarios en linux o unix:](#usuarios-en-linux-o-unix)
+    - [Operaciones:](#operaciones)
+    - [Permisos (textual es cuando uso caracteres):](#permisos-textual-es-cuando-uso-caracteres)
+    - [Buscar archivos](#buscar-archivos)
+    - [Find, busca en directorios siguiente una serie de criterios](#find-busca-en-directorios-siguiente-una-serie-de-criterios)
+    - [Interaccion con paginas web/files en la web, desde la terminal;](#interaccion-con-paginas-webfiles-en-la-web-desde-la-terminal)
+- [Markdown Cheatsheet](#markdown-cheatsheet)
+- [npm common commands:](#npm-common-commands)
+- [Github](#github)
+    - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
+- [hexedit](#hexedit)
+  - [Adding Repos to Fedora 36:](#adding-repos-to-fedora-36)
+    - [ytb-dl](#ytb-dl)
+    - [ffmpeg mp4 extract mp3](#ffmpeg-mp4-extract-mp3)
+    - [Regex](#regex)
+    - [oh my zsh](#oh-my-zsh)
+    - [curl](#curl)
+    - [fish shell](#fish-shell)
+    - [nvm (nodejs management)](#nvm-nodejs-management)
+    - [apache 2 in Fedora](#apache-2-in-fedora)
+    - [Fedora Linux Network Manager (DOWN and UP) restarting a Net interface)](#fedora-linux-network-manager-down-and-up-restarting-a-net-interface)
+    - [oh-my-posh Powershell and windows Terminal](#oh-my-posh-powershell-and-windows-terminal)
+    - [wget](#wget)
+    - [Docker](#docker)
+    - [dos2unix and unix2dos](#dos2unix-and-unix2dos)
+  - [SSH Server ](#ssh-server-)
+      - [SCP ](#scp-)
+  - [PowerShell](#powershell)
 
 ## vim editor
 
@@ -301,7 +346,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 # npm common commands:
 
-1.
+1. 
 
 # Github
 
@@ -314,28 +359,26 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - $ ssh-add ~/.ssh/id_ed25519
 
 3. Make git stop asking for credentials:
-
     - `git remote set-url origin git@github.com:username/repo.git`
     - `git config --global credential.helper store`
     - `git config --global credential.helper cache`
+
     - Examples:
         - `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
         - `git remote set-url origin git@github.com:sdsanchezm/typescript-all.git`
+
     - List all config:
         - `git config --list --show-origin`
         - `git config --list`
 
 4. get the actual list of remotes:
-
     - `git remote -v`
     - `git branch -r`
     - `git branch --all`
     - `git branch -a`
 
 5. undo `add` in git:
-
     - `git restore --staged pFinal/migrations/0001_initial.py`
-
         - `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
 
 6. restore previously added file:
@@ -349,8 +392,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - `git show COMMIT`
     - simply to show waht will be included (**before push**)
         - `git show`
-
-    - also `git diff COMMIT`
+    - also
+        - `git diff COMMIT`
 
 8. return the initial state before making changes (careful, no undo)
     - `git checkout -- .`
@@ -358,36 +401,40 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 9. list files commited so far
     - `git ls-tree --name-only -r <branch_name>`
     - `git ls-tree --name-only <branch> <dir>`
-        - example: `git ls-tree --name-only main ./`
+        - example: 
+            - `git ls-tree --name-only main ./`
 
 
 ### Initialize git (locally) the correct way
 
--   `git init .`
--   `git commit --allow-empty -m "Initial commit"`
+- `git init .`
+- `git commit --allow-empty -m "Initial commit"`
 
--   the default name is in field "init.defaultbranch=main" in:
-    `git config -l`
+- the default name is in field "init.defaultbranch=main" in:
+    - `git config -l`
 
--   Check the config list:
-    `git config --list`
+- Check the config list:
+    - `git config --list`
 
--   Create a new branch
-    `git branch branch1`
+- Create a new branch
+    - `git branch branch1`
 
--   List all branches and check where are now
-    `git branch -l`
-    `git branch --list`
+- List all branches and check where are now
+    - `git branch -l`
+    - `git branch --list`
 
--   Change branch
-    `git checkout main`
-    `git checkout branch1`
+- Change branch
+    - `git checkout main`
+    - `git checkout branch1`
 
--   Create and change branch in 1 command
-    `git checkout -b my-new-branch`
-    `$ git config --global user.name "sdsanchezm" (sdsanchezm is my name)`
-    `$ git config --global user.email "mySuperEmailExample@example.com" `
--   The ".git" folder in a repository represents the local repository itself, not the staging area.
+- Create and change branch in 1 command
+    - `git checkout -b my-new-branch`
+
+- Global git configuration
+    - `$ git config --global user.name "sdsanchezm" (sdsanchezm is my name)`
+    - `$ git config --global user.email "mySuperEmailExample@example.com" `
+
+- The ".git" folder in a repository represents the local repository itself, not the staging area.
 
 
 
@@ -787,3 +834,43 @@ README.md
 
 #### SCP 
 - `scp ./data.txt kraus@192.168.100.123:/home/kraus/`
+
+## PowerShell
+
+- scripts at [./Posh]
+
+- wget 
+    - `Invoke-WebRequest -Uri <URL> -OutFile <OutputFile>`
+    - `Invoke-WebRequest -Uri "https://example.com/file.zip" -OutFile "C:\path\to\save\file.zip"`
+    - `Invoke-WebRequest -Uri "https://example.com/file.zip" -OutFile "C:\path\to\save\file.zip" -ShowProgress $true`
+
+- rm
+    - `Remove-Item -Path <Path> [-Recurse] [-Force]`
+    - `Remove-Item -Path "C:\path\to\file.txt"`
+    - `rm -rf`
+        - `Remove-Item -Path "C:\path\to\directory" -Recurse -Force`
+
+    - `-Path`: Specifies the path of the item (file or directory) to be removed.
+    - `-Recurse`: Removes items in the specified directory and all its subdirectories. Use this parameter if you need to delete a - directory and its contents.
+    - `-Force`: Allows the cmdlet to remove items that cannot otherwise be changed, such as read-only files or hidden files.
+
+- grep
+    - `Get-Content "C:\path\to\file.txt" | Select-String "search_pattern"`
+    - `Get-Content "C:\path\to\file.txt" | Select-String "pattern"`
+    - `Get-ChildItem -Recurse -Filter *.txt | Get-Content | Select-String "pattern"`
+
+- `Get-Content`: This cmdlet reads the content of a file and sends it to the pipeline.
+- `Select-String`: This cmdlet searches for text patterns in the input, which, in this case, is the content of the file.
+- "C:\path\to\file.txt": Replace this with the path to the file you want to search.
+- "search_pattern": Replace this with the pattern you want to search for. You can use regular expressions or simple strings.
+
+- `"grep -IR 'NODE'"`
+    - `Get-ChildItem -Recurse | Select-String -Pattern 'NODE'`
+    - `Get-ChildItem -Recurse -Filter *.txt | Select-String -Pattern 'NODE'`
+
+
+
+
+
+
+
