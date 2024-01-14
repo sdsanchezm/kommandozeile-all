@@ -354,11 +354,20 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 2. Setup a ssh key: [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
 
-    - $ ssh-keygen -t ed25519 -C "your_favorite_name@example.com"
-    - $ eval "$(ssh-agent -s)"
-    - $ ssh-add ~/.ssh/id_ed25519
+    - Linux
+        - `$ ssh-keygen -t ed25519 -C "your_favorite_name@example.com"`
+        - `$ eval "$(ssh-agent -s)"`
+        - `$ ssh-add ~/.ssh/id_ed25519`
+    - Windows (normally under `C:\Users\<ryzUser>\.ssh>`)
+        - Generate the key
+            - `ssh-keygen -t ed25519 -C "your_email@example.com"`
+        - Make sure the service is up and set to manual
+            - `Get-Service -Name ssh-agent | Set-Service -StartupType Manual`
+            - `Start-Service ssh-agent`
+        - Add the generated key
+            - `ssh-add c:\Users\<USER>\.ssh\YourKeyFile`
 
-3. Make git stop asking for credentials:
+3. Git stop asking for credentials:
     - `git remote set-url origin git@github.com:username/repo.git`
     - `git config --global credential.helper store`
     - `git config --global credential.helper cache`
