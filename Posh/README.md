@@ -178,10 +178,43 @@ function Download-Files {
 # call the function 
 Download-Files -link $downloadLink
 
-```
 
+## Network
 
+- view 
+    - `netsh wlan show networks`
+    - `Get-NetWiFiProfile`
 
+- connect
+    - `netsh wlan connect name="WiFiNetworkName" ssid="WiFiNetworkName"`
+    - 
+
+- pwrt
+    - `netsh wlan connect name="WiFiNetworkName" ssid="WiFiNetworkName" keyMaterial="pwrtHier"`
+    - `Connect-NetWiFi -Name "YourWiFiNetworkName"`
+
+- disconnect
+    - `netsh wlan disconnect`
+    - `Disconnect-NetWiFi`
+
+- script.ps1
+    - 
+    ```
+    $networkName = "WiFi name"
+    $securityKey = "WiFi pwrt"
+
+    netsh wlan connect name="$networkName" ssid="$networkName"
+
+    Start-Sleep -Seconds 5
+
+    $connectedNetwork = netsh wlan show interfaces | Select-String -Pattern "SSID"
+    if ($connectedNetwork -like "*$networkName*") {
+        Write-Host "Connected to $networkName."
+    } else {
+        Write-Host "Failed to connect to $networkName."
+    }
+
+    ```
 
 
 
