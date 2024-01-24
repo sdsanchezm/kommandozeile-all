@@ -148,32 +148,32 @@ Get-FilesFromWebUri -uri $webUri
 ### download all files from a link
 
 - script to download all files from a link
-```powershell
-param (
-    [string]$downloadLink = "https://example.com/files"
-)
-
-function Download-Files {
+    ```powershell
     param (
-        [string]$link
+        [string]$downloadLink = "https://example.com/files"
     )
 
-    # create a folder
-    $outputFolder = "DownloadedFiles"
-    if (-not (Test-Path -Path $outputFolder)) {
-        New-Item -ItemType Directory -Path $outputFolder | Out-Null
-    }
+    function Download-Files {
+        param (
+            [string]$link
+        )
 
-    $webContent = Invoke-WebRequest -Uri $link
-    $fileLinks = $webContent.Links | Where-Object { $_.href -match '\.pdf$|\.doc$|\.txt$' }
+        # create a folder
+        $outputFolder = "DownloadedFiles"
+        if (-not (Test-Path -Path $outputFolder)) {
+            New-Item -ItemType Directory -Path $outputFolder | Out-Null
+        }
 
-    foreach ($fileLink in $fileLinks) {
-        $fileName = [System.IO.Path]::GetFileName($fileLink.href)
-        $filePath = Join-Path -Path $outputFolder -ChildPath $fileName
-        Invoke-WebRequest -Uri $fileLink.href -OutFile $filePath
-        Write-Host "Downloaded: $fileName"
+        $webContent = Invoke-WebRequest -Uri $link
+        $fileLinks = $webContent.Links | Where-Object { $_.href -match '\.pdf$|\.doc$|\.txt$' }
+
+        foreach ($fileLink in $fileLinks) {
+            $fileName = [System.IO.Path]::GetFileName($fileLink.href)
+            $filePath = Join-Path -Path $outputFolder -ChildPath $fileName
+            Invoke-WebRequest -Uri $fileLink.href -OutFile $filePath
+            Write-Host "Downloaded: $fileName"
+        }
     }
-}
 
 # call the function 
 Download-Files -link $downloadLink
@@ -183,7 +183,66 @@ Download-Files -link $downloadLink
 
 - view 
     - `netsh wlan show networks`
+    - `netsh wlan show profiles interface="WLAN-INTERFACE-NAME"`
+    - `netsh wlan show profiles interface="wi-fi"`
     - `Get-NetWiFiProfile`
+
+- view drivers
+    - `netsh wlan show drivers`
+
+- show wireless capabilities
+    `netsh wlan show wirelesscapabilities`
+
+- show wireless interfaces
+    `netsh wlan show interfaces`
+    `netsh wlan show interface name="WLAN-INTERFACE-NAME"`
+    `netsh wlan show interface name="Wi-Fi"`
+
+- show wireless profiles with key
+    `netsh wlan show profile name="WLAN-PROFILE-NAME" key=clear`
+    `netsh wlan show profile name="mysuperwifi" key=clear`
+
+- stop automatic connection and set it to manual
+    - `netsh wlan set profileparameter name="WLAN-PROFILE-NAME" connectionmode=manual`
+    - `netsh wlan set profileparameter name="mysuperwifi" connectionmode=manual`
+
+- Set connection to automatic
+    - `netsh wlan set profileparameter name="WLAN-PROFILE-NAME" connectionmode=auto`
+    - `netsh wlan set profileparameter name="mysuperwifi" connectionmode=auto`
+
+- delete a profile
+    - `netsh wlan delete profile name="mysuperwifi"`
+    
+- export
+    - `netsh wlan export profile name="WLAN-PROFILE-NAME" key=clear folder="C:\Users\<user>\wireless-backup"`
+    - `netsh wlan export profile name="WLAN-PROFILE-NAME" key=clear folder="FOLDER-PATH"`
+
+- profile order
+    - `netsh wlan set profileorder name=mysuperwifi priority=1 interface="Wi-Fi"`
+    - `netsh wlan set profileorder name="PROFILE-NAME" priority="PRIORITY-NUMBER" interface="ADAPTER-NAME"`
+
+- delete profile
+    - `netsh wlan delete profile name="PROFILE-NAME"`
+
+- connect
+    - `netsh wlan connect name=PROFILE-NAME`
+
+- import or add a connection from a xml file
+    - `netsh wlan add profile filename="C:\temp\w1.xml" interface="Wi-Fi 2"`
+    - `netsh wlan add profile filename="C:\Users\<user>\wireless-backup\Wi-Fi-mysuperwifi.xml"`
+    - `netsh wlan add profile filename="FOLDER-PATH\WLAN-EXPORTED-FILE" Interface="WLAN-INTERFACE-NAME" user=current`
+    - `netsh wlan add profile filename="C:\Users\<user>\wireless-backup\Wi-Fi-mysuperwifi.xml" Interface="Wi-Fi" user=current`
+
+- create a wlan report
+    - `netsh wlan show wlanreport`
+    
+- disable and enable an interface
+    - `netsh interface show interface`
+    - `netsh interface set interface "YOUR-ADAPTER-NAME" disable`
+    - `netsh interface set interface "YOUR-ADAPTER-NAME" enable`
+    - `Disable-NetAdapter -Name "YOUR-ADAPTER-NAME" -Confirm:$false`
+    - `Enable-NetAdapter -Name "YOUR-ADAPTER-NAME" -Confirm:$false`
+
 
 - connect
     - `netsh wlan connect name="WiFiNetworkName" ssid="WiFiNetworkName"`
@@ -199,23 +258,33 @@ Download-Files -link $downloadLink
 
 - script.ps1
     - 
-    ```
-    $networkName = "WiFi name"
-    $securityKey = "WiFi pwrt"
+        ```powershell
+        $networkName = "WiFi name"
+        $securityKey = "WiFi pwrt"
 
-    netsh wlan connect name="$networkName" ssid="$networkName"
+        netsh wlan connect name="$networkName" ssid="$networkName"
 
-    Start-Sleep -Seconds 5
+        Start-Sleep -Seconds 5
 
-    $connectedNetwork = netsh wlan show interfaces | Select-String -Pattern "SSID"
-    if ($connectedNetwork -like "*$networkName*") {
-        Write-Host "Connected to $networkName."
-    } else {
-        Write-Host "Failed to connect to $networkName."
-    }
+        $connectedNetwork = netsh wlan show interfaces | Select-String -Pattern "SSID"
+        if ($connectedNetwork -like "*$networkName*") {
+            Write-Host "Connected to $networkName."
+        } else {
+            Write-Host "Failed to connect to $networkName."
+        }
 
-    ```
+        ```
 
+- Quick Process
+    - view
+        - `netsh wlan show profile`
+    - export
+        - `netsh wlan export profile name="<NAME>" key=clear folder="C:\temp"`
+    - change the xml file: Update names, protected to false, pwrt on keyMaterial, delete hex;
+    - validate interface name
+        - `netsh wlan show interface`
+    - import file
+        - `netsh wlan add profile filename="C:\temp\w1.xml" interface="Wi-Fi 2"`
 
 
 
