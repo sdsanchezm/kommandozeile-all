@@ -769,6 +769,46 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 -   font: `FiraCode Nerd Font`
 
+#### posh usefull data
+
+- from: [https://ohmyposh.dev/docs/installation/windows]
+
+- Install
+    - `winget install JanDeDobbeleer.OhMyPosh -s winget`
+
+- Update
+    - `winget upgrade JanDeDobbeleer.OhMyPosh -s winget`
+
+- Themes environment variable:
+    - `POSH_THEMES_PATH`
+- show the variable:
+    - $env:POSH_THEMES_PATH
+- Result:
+    - `C:\Users\dieBesteMusikHinzufugen\AppData\Local\Programs\oh-my-posh\themes`
+
+- Install Powershell 7
+    - `Install Windows Terminal`
+
+- Initialization in PowerShell
+    - `use oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json" | Invoke-Expression `
+
+- Set the env
+    - `$env:Path += ";C:\Users\user\AppData\Local\Programs\oh-my-posh\bin"`
+
+- Install fonts
+    - `oh-my-posh font install`
+
+- get shell
+    - `oh-my-posh get shell`
+
+- create the profile file
+    - `New-Item -Path $PROFILE -Type File -Force`
+
+- Themes are at:
+    - `C:\Users\dieBesteMusikHinzufugen\AppData\Local\Programs\oh-my-posh\themes`
+
+
+
 ### wget
 
 -   wget all files in a folder:
