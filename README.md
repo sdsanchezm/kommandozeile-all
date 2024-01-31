@@ -429,6 +429,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `git branch branch1`
 
 - List all branches and check where are now
+    - `git branch -a`
     - `git branch -l`
     - `git branch --list`
 
@@ -438,6 +439,11 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 - Create and change branch in 1 command
     - `git checkout -b my-new-branch`
+
+- Delete a branch
+    - `git branch -d <branchName>`
+    - Force:
+        - `git branch -D <branchName>`
 
 - Global git configuration
     - `$ git config --global user.name "sdsanchezm" (sdsanchezm is my name)`
