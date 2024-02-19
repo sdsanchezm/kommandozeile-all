@@ -775,6 +775,24 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 -   font: `FiraCode Nerd Font`
 
+### Windows ip addresses
+
+- cd and cp to 'win/sys32/drivers/etc'
+```
+127.0.0.1       localhost
+::1             localhost
+127.0.0.1  activity.windows.com
+127.0.0.1  data.microsoft.com
+127.0.0.1  scorecardresearch.com
+127.0.0.1  azureedge.net
+127.0.0.1  msftconnecttest.com
+127.0.0.1  bingapis.com
+127.0.0.1  assets.msn.com
+127.0.0.1  data.msn.com
+127.0.0.1  edge.microsoft.com
+127.0.0.1  msedge.net
+```
+
 #### posh usefull data
 
 - from: [https://ohmyposh.dev/docs/installation/windows]
