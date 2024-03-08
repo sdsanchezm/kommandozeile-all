@@ -451,7 +451,11 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 - The ".git" folder in a repository represents the local repository itself, not the staging area.
 
+### Correct a mistake overwriting history
 
+- `git add [FILE]`
+- `git commit --amend`
+- `git push --force`
 
 # hexedit
 
