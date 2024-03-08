@@ -274,6 +274,19 @@ Download-Files -link $downloadLink
         }
 
         ```
+## Some Regex expressions
+
+- ip regex
+    ```powershell
+        Get-Content .\a.txt | Select-String '\d{4}'
+        "qwe123" -match '\d{2}'; $Matches[0] -replace '1','3'
+
+        $s = "I am a secret string 10.123.4.200"
+        $s -match "(\d{1,3}(\.)?){4}"
+
+        $s -match "(\d{1,3}(\.)?){4}"; $Matches[0] >> b.txt
+    ```
+
 
 - Quick Process
     - view
