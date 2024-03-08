@@ -1,6 +1,6 @@
 # RegEx
 
-# Curso de Platzi, RegEx
+# Curso PLTZ
 
 ### Generalidades
 
