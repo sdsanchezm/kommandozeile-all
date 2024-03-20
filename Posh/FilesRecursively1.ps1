@@ -1,6 +1,6 @@
 param (
-    [string]$folderPath = "C:\Path\To\Your\Folder",
-    [string]$searchString = "YourSearchString"
+    [string]$folderPath = "C:\dir\here",
+    [string]$searchString = "stringToFind"
 )
 
 function Search-StringInFiles {
