@@ -413,6 +413,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - example: 
             - `git ls-tree --name-only main ./`
 
+10. return committed file to stage (no losing changes)
+    - `git reset --soft HEAD^` or `git reset --soft HEAD~1`
+    - since git 2.23 
+        - `git restore --staged ./file`
 
 ### Initialize git (locally) the correct way
 
@@ -451,11 +455,11 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 - The ".git" folder in a repository represents the local repository itself, not the staging area.
 
-### Correct a mistake overwriting history
+- correct a mistake overwriting history
+    - `git add [FILE]`
+    - `git commit --amend`
+    - `git push --force`
 
-- `git add [FILE]`
-- `git commit --amend`
-- `git push --force`
 
 # hexedit
 
