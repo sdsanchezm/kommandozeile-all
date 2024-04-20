@@ -553,8 +553,39 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
             curl -X POST -H "Content-Type: application/json" -d '{
             "name": "John Doe",
             "schools": [1, 2, 3]
-            }' http://localhost:8000/teachers/
+            }' http://localhost:8081/teachers/
         ```
+
+    - Post Request using CURL Example:
+        ```curl
+        curl --location --request POST 'http://localhost:8081/student/school' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+            "name": "ticheMaria",
+            "number": 21,
+            "department": "Accounting",
+            "courses": [
+                {
+                    "title": "Taxes",
+                    "shortname": "tx1",
+                    "modulenumber": 2,
+                    "value": 1000
+                },
+                {
+                    "title": "React JS",
+                    "abbreviation": "RJS",
+                    "modules": 11,
+                    "fee": 1600
+                }
+            ]
+        }'
+        ```
+    - GET method to obtain raw data
+        ```curl
+        curl --location --request GET 'http://localhost:8081/dept/1' \
+        --data-raw ''
+        ```
+
 
 - Summary of the most used/important/relevant CURL commands:
 
