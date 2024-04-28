@@ -460,6 +460,43 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `git commit --amend`
     - `git push --force`
 
+# hexdump
+
+- get the first hex digits of a file
+    - `hexdump -n 3 -e'3/1 "%02X"'`
+    - `hexdump -n 4 -e '4/1 "%02X"'`
+    - `hexdump -C -n 160 filename`
+
+    - MP3:
+        - Hex: 49 44 33
+        - ASCII: ID3
+    - M4A (MPEG-4 Part 14 Audio):
+        - Hex: 66 74 79 70
+        - ASCII: ftyp
+    - WAV (Waveform Audio File Format):
+        - Hex: 52 49 46 46
+        - ASCII: RIFF
+    - FLAC (Free Lossless Audio Codec):
+        - Hex: 66 4C 61 43
+        - ASCII: fLaC
+    - OGG (Ogg Vorbis):
+        - Hex: 4F 67 67 53
+        - ASCII: OggS
+    - AAC (Advanced Audio Coding):
+        - Hex: FF F1
+        - ASCII: N/A (Starts with a syncword)
+    - AIFF (Audio Interchange File Format):
+        - Hex: 46 4F 52 4D
+        - ASCII: FORM
+    - WMA (Windows Media Audio):
+        - Hex: 30 26 B2 75
+        - ASCII: N/A (Starts with a GUID)
+    - APE (Monkey Audio):
+        - Hex: 4D 41 43 20
+        - ASCII: MAC
+    - ALAC:
+        - Hex: 00 00 00 14 66 74 79 70
+        - ASCII: ....ftyp
 
 # hexedit
 
