@@ -34,6 +34,7 @@
 # Folders
 davsWork
 workDavs
-.vscode
-.dat
-.davs
+*.vscode
+*.dat
+*.davs
+*.csv
