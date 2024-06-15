@@ -3,7 +3,22 @@
 # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # Set-ExecutionPolicy Restricted -Scope CurrentUser
 
-$folders = @("musik", "bilder", "apps", "apps_portable", "temp", "books_all")
+$machineName = "redenhaput"
+
+$folders = @(
+    "apps",
+    "apps_portable",
+    "bilder",
+    "books_all",
+    "cygwin64",
+    "cygwin64Packages",
+    "musik", 
+    "progs",
+    "temp",
+    "shared_ss_${machineName}",
+    "VMsAll",
+    "ssfs_${machineName}"
+    )
 
 foreach ($folder in $folders) {
     $folderPath = Join-Path -Path "C:\" -ChildPath $folder
