@@ -54,6 +54,7 @@
 ### Advance Properties
 
 - `SystemPropertiesAdvanced`
+- `sysdm.cpl`
 
 ## Windows Server
 
