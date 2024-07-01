@@ -300,4 +300,78 @@ Download-Files -link $downloadLink
         - `netsh wlan add profile filename="C:\temp\w1.xml" interface="Wi-Fi 2"`
 
 
+## Importing Modules
+
+- Import a Module
+    - `Import-Module .\Ss-Modules.psm1`
+
+- Verify functions of a module
+    - `Get-Command -Module Ss-Modules`
+
+- If making changes to the module, gotta be removed and re-imported
+    - Removing and re-importing
+        - `Remove-Module Ss-Modules; Import-Module .\Ss-Modules.psm1`
+
+- **Persistence of the module**
+    - Getting path value
+        - `$Path=$env:PSModulePath -split ";"`
+        - `$Path[0]`
+
+    - Adding the MyTools Folder
+        - `$ModulePath=$Path[0] + "\MyTools"`
+        - `$ModulePath`
+
+    - Creating the new item of type Directory
+        - `New-item $ModulePath -ItemType Directory`
+
+    - copying item of module path
+        - `Copy-Item C:\ssfs\Ss-Modules.psm1 -Destination $ModulePath -Force`
+
+    - example of module:
+        ```
+        <#
+        .Synopsis
+        This is the Synopsis perro
+        .Description
+        This is the description socio
+        .Parameter GetHello
+        This is GetHello socio
+        .Example
+        Get-Hello
+        .Example
+        Get-Sum 1 2
+        #>
+
+        Function Get-Hello
+        {
+            Write-host "Hello from get-Hello"
+        }
+
+        <#
+        .Synopsis
+        This is the Synopsis perro
+        .Description
+        This is the description socio
+        .Parameter GetHello
+        This is Get-Sum socio
+        .Example
+        Get-Hello
+        .Example
+        Get-Sum 1 2
+        #>
+
+        Function Get-Sum
+        {
+
+            [CmdletBinding()]
+            Param(
+                # number 1 XD
+                [int]$num1,
+                # number 2 XD
+                [int]$num2
+            )
+            Write-Host "$num1 + $num2 = " ($num1 + $num2)
+        }
+        ```
+
 
