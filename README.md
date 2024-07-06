@@ -418,6 +418,19 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - since git 2.23 
         - `git restore --staged ./file`
 
+11. git stash changes
+- Examples
+    - `git stash` - save in stash
+    - `git checkout other-branch` - checkout a different branch
+    - `git stash apply` - bring up those changes 
+    - `git stash apply <name>` - or (from above) indicate the stash name
+    - `git stash drop` - drop the stash changes
+    - `git stash list` - list stash
+    - `git stash clear` - removes all stashes
+    - `git stash pop` - brings changes from specific stash
+    - `git stash push -m "message"` - save stash with a message
+
+
 ### Initialize git (locally) the correct way
 
 - `git init .`
