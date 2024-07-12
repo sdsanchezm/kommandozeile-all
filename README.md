@@ -66,15 +66,17 @@ vim Editor commands:
 
 9. the "\* and "+ paste the clipboard into the insert mode
 
-10. undo:
-    `u`
+10. undo
+- `u`
+- or: `:u`
+- or: `:undo`
+- or: `:undo 3`
 
--   or:
-    `:u`
--   or:
-    `:undo`
--   or:
-    `:undo 3`
+11. Go to the beggining of the file
+    - `gg`
+
+12. Delete the whole text file
+    - `dG`
 
 ### plugins and stuff
 
