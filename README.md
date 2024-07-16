@@ -2,10 +2,6 @@
 
 _Description:_ Summary of command Line and helpful tools to improve efficiency and enablers to deploy and abstract even more.
 
-## Table of contents
-
-## Table of Contents
-
 ## Table of Contents
 
 - [kommandozeile-all](#kommandozeile-all)
@@ -360,6 +356,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - `$ ssh-keygen -t ed25519 -C "your_favorite_name@example.com"`
         - `$ eval "$(ssh-agent -s)"`
         - `$ ssh-add ~/.ssh/id_ed25519`
+        - the `.pub` to github; the private key to: `~/.ssh`
     - Windows (normally under `C:\Users\<ryzUser>\.ssh>`)
         - Generate the key
             - `ssh-keygen -t ed25519 -C "your_email@example.com"`
