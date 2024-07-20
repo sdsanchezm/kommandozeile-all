@@ -5,47 +5,51 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
 ## Table of Contents
 
 - [kommandozeile-all](#kommandozeile-all)
-  - [Table of contents](#table-of-contents)
   - [Table of Contents](#table-of-contents)
   - [vim editor](#vim-editor)
+  - [Linux Terminal](#linux-terminal)
     - [plugins and stuff](#plugins-and-stuff)
-    - [LazyVim ](#lazyvim-)
-- [From the course:](#from-the-course)
-  - [### utilidades batch:](#-utilidades-batch)
-    - [utilidades batch avanzadas:](#utilidades-batch-avanzadas)
+    - [LazyVim](#lazyvim)
+- [From the course](#from-the-course)
+    - [utilidades batch:](#utilidades-batch:)
+    - [advanced bash utilities](#advanced-bash-utilities)
     - [sed](#sed)
     - [awk](#awk)
     - [user linux](#user-linux)
   - [Data processing](#data-processing)
-    - [Flujos estandar en la terminal:](#flujos-estandar-en-la-terminal)
-    - [usuarios en linux o unix:](#usuarios-en-linux-o-unix)
-    - [Operaciones:](#operaciones)
-    - [Permisos (textual es cuando uso caracteres):](#permisos-textual-es-cuando-uso-caracteres)
-    - [Buscar archivos](#buscar-archivos)
-    - [Find, busca en directorios siguiente una serie de criterios](#find-busca-en-directorios-siguiente-una-serie-de-criterios)
-    - [Interaccion con paginas web/files en la web, desde la terminal;](#interaccion-con-paginas-webfiles-en-la-web-desde-la-terminal)
+    - [terminal data flow](#terminal-data-flow)
+    - [users in linux o unix](#users-in-linux-o-unix)
+    - [operations](#operations)
+    - [permissions](#permissions)
+    - [find files](#find-files)
+    - [Find directories in a series of criteria](#find-directories-in-a-series-of-criteria)
+    - [Multiple web pages intaraction](#multiple-web-pages-intaraction)
 - [Markdown Cheatsheet](#markdown-cheatsheet)
-- [npm common commands:](#npm-common-commands)
+- [npm common commands](#npm-common-commands)
 - [Github](#github)
-    - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
+    - [Initialize git (locally) the correct way](#initialize-git-(locally)-the-correct-way)
+- [hexdump](#hexdump)
 - [hexedit](#hexedit)
-  - [Adding Repos to Fedora 36:](#adding-repos-to-fedora-36)
-    - [ytb-dl](#ytb-dl)
+- [Adding Repos to Fedora 36](#adding-repos-to-fedora-36)
+  - [ytb-dl](#ytb-dl)
     - [ffmpeg mp4 extract mp3](#ffmpeg-mp4-extract-mp3)
     - [Regex](#regex)
     - [oh my zsh](#oh-my-zsh)
     - [curl](#curl)
     - [fish shell](#fish-shell)
-    - [nvm (nodejs management)](#nvm-nodejs-management)
+    - [nvm (nodejs management)](#nvm-(nodejs-management))
     - [apache 2 in Fedora](#apache-2-in-fedora)
-    - [Fedora Linux Network Manager (DOWN and UP) restarting a Net interface)](#fedora-linux-network-manager-down-and-up-restarting-a-net-interface)
+    - [Fedora Linux Network Manager (DOWN and UP) restarting a Net interface](#fedora-linux-network-manager-(down-and-up)-restarting-a-net-interface)
     - [oh-my-posh Powershell and windows Terminal](#oh-my-posh-powershell-and-windows-terminal)
+    - [Windows ip addresses](#windows-ip-addresses)
+      - [posh usefull data](#posh-usefull-data)
     - [wget](#wget)
     - [Docker](#docker)
     - [dos2unix and unix2dos](#dos2unix-and-unix2dos)
-  - [SSH Server ](#ssh-server-)
-      - [SCP ](#scp-)
+  - [SSH Server](#ssh-server)
+    - [SCP](#scp)
   - [PowerShell](#powershell)
+
 
 ## vim editor
 
@@ -73,6 +77,8 @@ vim Editor commands:
 
 12. Delete the whole text file
     - `dG`
+
+## Linux Terminal 
 
 ### plugins and stuff
 
@@ -149,7 +155,7 @@ https://github.com/junegunn/vim-plug
     - `rm -rf ~/.config/nvim/.git`
     - `nvim`
 
-# From the course:
+# From the course
 
 ##
 
@@ -160,7 +166,7 @@ https://github.com/junegunn/vim-plug
 -   tail // last 10 lines
 -   $ tail -n 20 file.txt // last 20 lines
 
-### utilidades batch avanzadas:
+### advanced bash utilities
 
 -   grep // permite trabajar con archivos regulares, busca lineas
 -   $ grep -i "hanks'),$" dump1.sql // aca el $ quiere decir, el resto
@@ -201,7 +207,7 @@ https://github.com/junegunn/vim-plug
 
 ## Data processing
 
-### Flujos estandar en la terminal:
+### terminal data flow
 
 -   entrada estandar
 -   salida estandar
@@ -259,25 +265,22 @@ $ kill -9 [pin number] // mata un proceso por pid
 $ killall
 ```
 
-### usuarios en linux o unix:
+### users in linux o unix
 
 u - Owner of the file
 g - Grups
 o - Others
 a - all
 
-### Operaciones:
+### operations
 
 -   r - Leer, Read
 -   w - Escribir, Write
 -   x - ejecutar, Execute
+- `+ agregar`
+- `quitar`
 
-```
-+ agregar
-- quitar
-```
-
-### Permisos (textual es cuando uso caracteres):
+### permissions
 
 -   chmod (change mode):
 
@@ -307,7 +310,7 @@ chgrp (change group):
 -   Permisos del grupo
 -   los ultimos 3: Permisos del resto de usuarios del sistema
 
-### Buscar archivos
+### find files
 
 -   $ locate file.text // antes de usarlo, se debe updatear la base de datos:
 -   $ sudo updatedb // ahora si se puede usar el comando locate
@@ -315,7 +318,7 @@ chgrp (change group):
 -   $ whereis echo // se usa para encontrar archivos binarios del sistema
     `$ whereis python`
 
-### Find, busca en directorios siguiente una serie de criterios
+### Find directories in a series of criteria
 
 -   $ find . -user ss -perm 644 // busca en el directorio actual, que pertenecan a ss y que tengan permisos 644
 -   $ find . -user ss // busca desde el directorio actual (.) todos los archivos que pertenezcan al usuario ss
@@ -327,7 +330,7 @@ chgrp (change group):
 find . -type f -mtime +7 -exec cp {} ./backup/ \;
 ```
 
-### Interaccion con paginas web/files en la web, desde la terminal;
+### Multiple web pages intaraction
 
 ```
 $ curl // devuelve el codigo directamente de la pagina
@@ -342,7 +345,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 1. [md cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-# npm common commands:
+# npm common commands
 
 1. 
 
@@ -529,7 +532,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 -   open with sectors and colors
     -   hexedit -s --color [file]
 
-## Adding Repos to Fedora 36:
+# Adding Repos to Fedora 36
 
 -   The file extension should be `.repo`
 -   Commands:
@@ -550,7 +553,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     -   [https://docs.fedoraproject.org/en-US/quick-docs/adding-or-removing-software-repositories-in-fedora/]
     -   [https://copr.fedorainfracloud.org/coprs/mbriza/recordmydesktop/]
 
-### ytb-dl
+## ytb-dl
 
 -   Command:
     -   `ytb-dl -x --audio-format mp3 vURL`
@@ -575,32 +578,28 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 ### curl
 
--   get request:
+- get request:
+    - `curl http://127.0.0.1:8000/test/student/ | json`
+    - previous glbaly install json: `npm install -g json`
 
-    -   `curl http://127.0.0.1:8000/test/student/ | json`
-    -   previous glbaly install json: `npm install -g json`
-
--   post method:
-
-    -   documentation at: [https://curl.se/docs/httpscripting.html](https://curl.se/docs/httpscripting.html)
-    -   `curl --data "birthyear=1905&press=%20OK%20" http://www.example.com/api/someendpoint.cgi`
-    -   first send a POST and then GET:
-        -   `curl -d score=10 http://example.com/post.cgi --next http://example.com/results.html`
-    -   two GET:
-        -   `curl http://url1.example.com http://url2.example.com`
-    -   two POST:
-
-        -   `curl --data name=curl http://url1.example.com http://url2.example.com`
-
-    -   ```
-            curl -X POST https://reqbin.com/echo/post/json
-            -H "Content-Type: multipart/form-data"
-            -d '[post data]'
-        ```
-    -   code
+- post method:
+    - documentation at: [https://curl.se/docs/httpscripting.html](https://curl.se/docs/httpscripting.html)
+    - `curl --data "birthyear=1905&press=%20OK%20" http://www.example.com/api/someendpoint.cgi`
+    - first send a POST and then GET:
+        - `curl -d score=10 http://example.com/post.cgi --next http://example.com/results.html`
+    - two GET:
+        - `curl http://url1.example.com http://url2.example.com`
+    - two POST:
+        - `curl --data name=curl http://url1.example.com http://url2.example.com`
+            ```
+                curl -X POST https://reqbin.com/echo/post/json
+                -H "Content-Type: multipart/form-data"
+                -d '[post data]'
+            ```
+    - code
         ```
             curl -X POST -H "Content-Type: application/json" -d '{
-            "name": "John Doe",
+            "name": "Jamecho",
             "schools": [1, 2, 3]
             }' http://localhost:8081/teachers/
         ```
@@ -736,33 +735,33 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
         
 
--   Documentation
-    -   [https://reqbin.com/req/c-g5d14cew/curl-post-example]
-    -   Great examples: [https://gist.github.com/subfuzion/08c5d85437d5d4f00e58](https://gist.github.com/subfuzion/08c5d85437d5d4f00e58)
+- Documentation
+    - [https://reqbin.com/req/c-g5d14cew/curl-post-example]
+    - Great examples: [https://gist.github.com/subfuzion/08c5d85437d5d4f00e58](https://gist.github.com/subfuzion/08c5d85437d5d4f00e58)
 
 ### fish shell
 
--   Documentation: [https://fishshell.com/docs/current/cmds/alias.html]
--   Config alias dir: `~/.config/fish/config.fish`
--   Alias config: `alias p="clear;ls -l;pwd"`
+- Documentation: [https://fishshell.com/docs/current/cmds/alias.html]
+- Config alias dir: `~/.config/fish/config.fish`
+- Alias config: `alias p="clear;ls -l;pwd"`
 
 ### nvm (nodejs management)
 
--   Link: [https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/]
--   Some commands:
-    -   First: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash` or:
-    -   `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
-    -   Update `~/.zshrc` or `~/.bash_profile`
-    -   Export the config:
-        -   `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+- Link: [https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/]
+- Some commands:
+    - First: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash` or:
+    - `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
+    - Update `~/.zshrc` or `~/.bash_profile`
+    - Export the config:
+        - `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" `
-    -   Reload: `source ~/.bashrc` or `source ~/.zshrc`
+    - Reload: `source ~/.bashrc` or `source ~/.zshrc`
 
 ### apache 2 in Fedora
 
 -   [https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/]
 
-### Fedora Linux Network Manager (DOWN and UP) restarting a Net interface)
+### Fedora Linux Network Manager (DOWN and UP) restarting a Net interface
 
 - Install net-tools
 	- `$ sudo dnf install net-tools`
@@ -866,20 +865,20 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 ### Windows ip addresses
 
 - cd and cp to 'win/sys32/drivers/etc'
-```
-127.0.0.1       localhost
-::1             localhost
-127.0.0.1  activity.windows.com
-127.0.0.1  data.microsoft.com
-127.0.0.1  scorecardresearch.com
-127.0.0.1  azureedge.net
-127.0.0.1  msftconnecttest.com
-127.0.0.1  bingapis.com
-127.0.0.1  assets.msn.com
-127.0.0.1  data.msn.com
-127.0.0.1  edge.microsoft.com
-127.0.0.1  msedge.net
-```
+    ```
+    127.0.0.1       localhost
+    ::1             localhost
+    127.0.0.1  activity.windows.com
+    127.0.0.1  data.microsoft.com
+    127.0.0.1  scorecardresearch.com
+    127.0.0.1  azureedge.net
+    127.0.0.1  msftconnecttest.com
+    127.0.0.1  bingapis.com
+    127.0.0.1  assets.msn.com
+    127.0.0.1  data.msn.com
+    127.0.0.1  edge.microsoft.com
+    127.0.0.1  msedge.net
+    ```
 
 #### posh usefull data
 
@@ -934,34 +933,33 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 ### Docker
 
 -   this is a structure basic of the `.dockerignore` file
-
-```
-**/.env
-**/.classpath
-**/.git
-**/.gitignore
-**/.settings
-**/.project
-**/.toolstarget
-**/.vs
-**/.vscode
-**/*.*proj.user
-**/*.dbmdl
-**/*.jfm
-**/.dockerignore
-**/Dockerfile*
-**/obj
-**/bin
-**/charts
-**/docker-compose*
-**/node_modules
-**/secrets.dev.yaml
-**/npm-debug.log
-**/azds.yaml
-**/values.dev.yaml
-LICENSE
-README.md
-```
+    ```
+    **/.env
+    **/.classpath
+    **/.git
+    **/.gitignore
+    **/.settings
+    **/.project
+    **/.toolstarget
+    **/.vs
+    **/.vscode
+    **/*.*proj.user
+    **/*.dbmdl
+    **/*.jfm
+    **/.dockerignore
+    **/Dockerfile*
+    **/obj
+    **/bin
+    **/charts
+    **/docker-compose*
+    **/node_modules
+    **/secrets.dev.yaml
+    **/npm-debug.log
+    **/azds.yaml
+    **/values.dev.yaml
+    LICENSE
+    README.md
+    ```
 
 
 ### dos2unix and unix2dos
@@ -993,7 +991,7 @@ README.md
 - // connect
     - `ssh username@fedora-ip-or-hostname`
 
-#### SCP 
+### SCP 
 - `scp ./data.txt kraus@192.168.100.123:/home/kraus/`
 
 ## PowerShell
