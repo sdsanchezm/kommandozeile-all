@@ -1,6 +1,8 @@
 # Windows Management Console (msc) Commands
 
 - win + R to run
+	- regular user: [enter]
+	- admin user: [ctrl] + [shift] + [enter]
 
 ## Windows user
 
