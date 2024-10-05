@@ -27,6 +27,7 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
 - [Markdown Cheatsheet](#markdown-cheatsheet)
 - [npm common commands](#npm-common-commands)
 - [Github](#github)
+    - [ssh key generation](#ssh-key-generation)
     - [Initialize git (locally) the correct way](#initialize-git-(locally)-the-correct-way)
 - [hexdump](#hexdump)
 - [hexedit](#hexedit)
@@ -351,15 +352,26 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 # Github
 
-1. https://docs.github.com/en/get-started/quickstart/fork-a-repo
+## ssh key generation
+
+1. documentation
+    - [https://docs.github.com/en/get-started/quickstart/fork-a-repo]
+    - [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux]
 
 2. Setup a ssh key: [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
 
     - Linux
-        - `$ ssh-keygen -t ed25519 -C "your_favorite_name@example.com"`
+        - `$ ssh-keygen -t ed25519 -C "useremail@example.com"`
         - `$ eval "$(ssh-agent -s)"`
         - `$ ssh-add ~/.ssh/id_ed25519`
-        - the `.pub` to github; the private key to: `~/.ssh`
+    - Note:
+        - `.pub` to github; the private key to: `~/.ssh`
+    - Test:
+        - `ssh -T git@github.com`
+        - `sudo ssh -vT git@github.com`
+    - Note2:
+        - might be required to do 3.
+
     - Windows (normally under `C:\Users\<ryzUser>\.ssh>`)
         - Generate the key
             - `ssh-keygen -t ed25519 -C "your_email@example.com"`
