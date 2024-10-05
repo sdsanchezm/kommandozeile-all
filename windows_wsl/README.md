@@ -3,7 +3,7 @@
 ### Install ubuntu
 - `wsl --install -d ubuntu`
 
-### Set defaul version
+### Set default wsl version
 - `wsl --set-default-version 2`
 
 ### list distros
@@ -15,6 +15,13 @@
     - `wsl -d fedora -u ss`
 - default login:
     - `wsl -d fedora`
+- defaul user in distro when logged in
+    - edit/create `/etc/wsl.conf`
+        - 
+            ```
+            [user]
+            default = ss
+            ```
 
 ### import a distro from local file
 - `wsl --import <name> <location> <image>`
