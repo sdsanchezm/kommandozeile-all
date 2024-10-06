@@ -364,13 +364,16 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - `$ ssh-keygen -t ed25519 -C "useremail@example.com"`
         - `$ eval "$(ssh-agent -s)"`
         - `$ ssh-add ~/.ssh/id_ed25519`
-    - Note:
-        - `.pub` to github; the private key to: `~/.ssh`
-    - Test:
-        - `ssh -T git@github.com`
-        - `sudo ssh -vT git@github.com`
-    - Note2:
-        - might be required to do 3.
+
+        - Note:
+            - `.pub` to github; the private key to: `~/.ssh`
+        - Test:
+            - `ssh -T git@github.com`
+            - `sudo ssh -vT git@github.com` => (in case error)
+        - also required to perform push using the new key:
+            - `git config --global user.email "jamecho@example.com"`
+            - `git config --global user.name "jamecho"`
+            - `git remote set-url origin git@github.com:jamecho/<repoName>.git`
 
     - Windows (normally under `C:\Users\<ryzUser>\.ssh>`)
         - Generate the key
