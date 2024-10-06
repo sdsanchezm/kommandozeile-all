@@ -18,10 +18,22 @@
 - defaul user in distro when logged in
     - edit/create `/etc/wsl.conf`
         - 
-            ```
-            [user]
-            default = ss
-            ```
+        ```
+        [user]
+        default = ss
+        ```
+- init `systemd` at boot time
+    - edit/create `/etc/wsl.conf`
+        - 
+        ```
+        [boot]
+        systemd=true
+        ```
+
+### wsl update restart
+- `wsl -h` => help
+- `wsl --update` => just update
+- `wsl --shutdown` => restart wsl
 
 ### import a distro from local file
 - `wsl --import <name> <location> <image>`
