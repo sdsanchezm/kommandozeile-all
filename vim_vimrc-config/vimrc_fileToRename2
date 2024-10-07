@@ -1,0 +1,8 @@
+set showmode
+set autoindent
+set tabstop=4
+set expandtab
+set number
+syntax on
+colorscheme desert
+" this is a comment

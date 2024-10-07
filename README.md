@@ -79,6 +79,18 @@ vim Editor commands:
 12. Delete the whole text file
     - `dG`
 
+13. vim basic configuration (~/.vimrc) content
+    ```bash
+    set showmode
+    set autoindent
+    set tabstop=4
+    set expandtab
+    set number
+    syntax on
+    colorscheme desert
+    " this is a comment
+    ```
+
 ## Linux Terminal 
 
 ### plugins and stuff
