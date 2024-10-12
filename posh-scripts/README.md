@@ -302,20 +302,32 @@ Download-Files -link $downloadLink
 
 ## Importing Modules
 
-- Import a Module
-    - `Import-Module .\Ss-Modules.psm1`
+- include `Export-ModuleMember -Function p;` in the module
+- rename your ps1 top *.psm1*
+
+- Include *Import-Module* into your $PROFILE variable
+    - `Import-Module C:\ssfs\Modules\p.psm1`
 
 - Verify functions of a module
-    - `Get-Command -Module Ss-Modules`
+    - `Get-Command -Module p`
+    - `Get-Module`
 
 - If making changes to the module, gotta be removed and re-imported
     - Removing and re-importing
-        - `Remove-Module Ss-Modules; Import-Module .\Ss-Modules.psm1`
+        - `Remove-Module p; Import-Module C:\p.psm1`
+- to only remove a module
+    - `Remove-Module p`
 
-- **Persistence of the module**
+- **1st option for persistence of the module**
+    - just add `Import-Module C:\ssfs\Modules\p.psm1` to you $PROFILE variable
+    - `notepad++ $PROFILE`
+    - then add `Import-Module C:\ssfs\Modules\p.psm1` to persist
+
+- **2nd option for persistence of the module**
     - Getting path value
         - `$Path=$env:PSModulePath -split ";"`
         - `$Path[0]`
+        - `$env:PSModulePath += 'C:\ssfs\Modules\'`
 
     - Adding the MyTools Folder
         - `$ModulePath=$Path[0] + "\MyTools"`
@@ -327,51 +339,62 @@ Download-Files -link $downloadLink
     - copying item of module path
         - `Copy-Item C:\ssfs\Ss-Modules.psm1 -Destination $ModulePath -Force`
 
-    - example of module:
-        ```
-        <#
-        .Synopsis
-        This is the Synopsis perro
-        .Description
-        This is the description socio
-        .Parameter GetHello
-        This is GetHello socio
-        .Example
-        Get-Hello
-        .Example
-        Get-Sum 1 2
-        #>
+- example 1 of module:
+    ```bash
+    <#
+    .Synopsis
+    This is the Synopsis perro
+    .Description
+    This is the description socio
+    .Parameter GetHello
+    This is GetHello socio
+    .Example
+    Get-Hello
+    .Example
+    Get-Sum 1 2
+    #>
 
-        Function Get-Hello
-        {
-            Write-host "Hello from get-Hello"
-        }
+    Function Get-Hello
+    {
+        Write-host "Hello from get-Hello"
+    }
 
-        <#
-        .Synopsis
-        This is the Synopsis perro
-        .Description
-        This is the description socio
-        .Parameter GetHello
-        This is Get-Sum socio
-        .Example
-        Get-Hello
-        .Example
-        Get-Sum 1 2
-        #>
+    <#
+    .Synopsis
+    This is the Synopsis perro
+    .Description
+    This is the description socio
+    .Parameter GetHello
+    This is Get-Sum socio
+    .Example
+    Get-Hello
+    .Example
+    Get-Sum 1 2
+    #>
 
-        Function Get-Sum
-        {
+    Function Get-Sum
+    {
 
-            [CmdletBinding()]
-            Param(
-                # number 1 XD
-                [int]$num1,
-                # number 2 XD
-                [int]$num2
-            )
-            Write-Host "$num1 + $num2 = " ($num1 + $num2)
-        }
-        ```
+        [CmdletBinding()]
+        Param(
+            # number 1 XD
+            [int]$num1,
+            # number 2 XD
+            [int]$num2
+        )
+        Write-Host "$num1 + $num2 = " ($num1 + $num2)
+    }
+    ```
 
+- example 2 of a module (must import the function)
+    ```bash
+    Function p
+    {
+        clear;
+        ls;
+        pwd;
+    }
+
+    Export-ModuleMember -Function p;
+    ```
 
