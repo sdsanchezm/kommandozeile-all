@@ -17,10 +17,12 @@ $folders = @(
     "temp",
     "shared_ss_${machineName}",
     "VMsAll",
-    "ssfs_${machineName}"
+    "ssfs",
+    "ssfs\Modules"
     )
 
-foreach ($folder in $folders) {
+foreach ($folder in $folders)
+{
     $folderPath = Join-Path -Path "C:\" -ChildPath $folder
     New-Item -Path $folderPath -ItemType Directory
     Write-Host "Created folder: $folderPath"
