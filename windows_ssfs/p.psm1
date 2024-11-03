@@ -5,6 +5,13 @@ Function p
 	pwd;
 }
 
+Function pp
+{
+	clear;
+	ls -directory;
+	pwd;
+}
+
 Function progs
 {
 	clear;
