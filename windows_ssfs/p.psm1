@@ -2,7 +2,8 @@ Function p
 {
 	clear;
 	ls;
-	pwd;
+	# pwd;
+ 	(pwd).Path;
 }
 
 Function pp
@@ -17,7 +18,7 @@ Function progs
 	clear;
 	cd C:\progs;
 	ls;
-	pwd;
+	(pwd).Path;
 }
 
 Function o
