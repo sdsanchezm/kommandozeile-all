@@ -36,6 +36,7 @@ Function lsp
 }
 
 Export-ModuleMember -Function p;
+Export-ModuleMember -Function pp;
 Export-ModuleMember -Function o;
 Export-ModuleMember -Function i;
 Export-ModuleMember -Function lsp;

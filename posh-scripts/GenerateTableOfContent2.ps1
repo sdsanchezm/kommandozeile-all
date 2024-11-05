@@ -1,5 +1,4 @@
-Function GenerateMarkdownTableOfContent
-{
+Function GenerateMarkdownTableOfContent {
     param
     (
         [Parameter(Mandatory=$true)]
@@ -10,12 +9,10 @@ Function GenerateMarkdownTableOfContent
 
     $headings = @()
 
-    $pattern = '^(#+)\s+(.*)$'
+    $pattern = "^(#+)\s+(.*)$"
 
-    $content -split "`r`n" | ForEach-Object
-    {
-        if ($_ -match $pattern)
-        {
+    $content -split "\r?\n" | ForEach-Object{
+        if($_ -match $pattern){
             $level = $matches[1].Length
             $text = $matches[2].Trim()
             $headings += [PSCustomObject]@{
@@ -26,19 +23,18 @@ Function GenerateMarkdownTableOfContent
     }
 
     $toc = @()
-    foreach ($heading in $headings)
-    {
-        $indent = '  ' * ($heading.Level - 2)
+    foreach ($heading in $headings){
+        $indent = '  ' * ($heading.Level)
         $tocLine = "$indent- [$($heading.Text)](#" + $heading.Text.ToLower().Replace(' ', '-') + ")"
         $toc += $tocLine
     }
 
     # uncomment to print output
-    # $toc
+    $toc
 }
 
 # to use:
 # $markdownFilePath = "./README.md"
 $markdownFilePath = "./README.md"
-$toc = Generate-MarkdownTOC -FilePath $markdownFilePath
+$toc = GenerateMarkdownTableOfContent -FilePath $markdownFilePath
 $toc
