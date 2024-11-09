@@ -36,9 +36,23 @@ Function lsp
 	get-childitem -directory | ForEach-Object { ls $_; }
 }
 
+Function pullall
+{
+	# requires i
+	get-childitem -directory | ForEach-Object { cd $_; i; cd.. }
+}
+
+Function statusall
+{
+	# requires o
+	get-childitem -directory | ForEach-Object { cd $_; o; cd.. }
+}
+
 Export-ModuleMember -Function p;
 Export-ModuleMember -Function pp;
 Export-ModuleMember -Function o;
 Export-ModuleMember -Function i;
 Export-ModuleMember -Function lsp;
 Export-ModuleMember -Function progs;
+Export-ModuleMember -Function statusall;
+Export-ModuleMember -Function pullall;
