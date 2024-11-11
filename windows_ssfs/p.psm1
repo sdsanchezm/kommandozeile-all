@@ -39,13 +39,13 @@ Function lsp
 Function pullall
 {
 	# requires i
-	get-childitem -directory | ForEach-Object { cd $_; i; cd.. }
+	get-childitem -directory | ForEach-Object { cd $_; (pwd).Path + "--------------"; i; cd.. }
 }
 
 Function statusall
 {
 	# requires o
-	get-childitem -directory | ForEach-Object { cd $_; o; cd.. }
+	get-childitem -directory | ForEach-Object { cd $_; (pwd).Path + "--------------"; o; cd.. }
 }
 
 Export-ModuleMember -Function p;
