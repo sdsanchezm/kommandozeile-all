@@ -398,3 +398,15 @@ Download-Files -link $downloadLink
     Export-ModuleMember -Function p;
     ```
 
+
+### one liners
+
+- `Get-Content -Path '*.DAT.log' | Select-String -Pattern 'change' -Context 1,1 | Foreach-Object { $_.ToString() } | Select-String -Pattern 'someText'`
+
+- example
+    ```
+    (Get-ChildItem -Path '*Pax*.ps1' -Force -Recurse).Directory
+(Get-ChildItem -Path '*Pax*.ps1' -Force -Recurse).Directory | Select-String -Pattern 'Mission'
+```
+
+- 
