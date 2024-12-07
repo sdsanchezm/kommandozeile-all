@@ -401,12 +401,17 @@ Download-Files -link $downloadLink
 
 ### one liners
 
-- `Get-Content -Path '*.DAT.log' | Select-String -Pattern 'change' -Context 1,1 | Foreach-Object { $_.ToString() } | Select-String -Pattern 'someText'`
+- Pattern on results
+    - `Get-Content -Path '*.DAT.log' | Select-String -Pattern 'change' -Context 1,1 | Foreach-Object { $_.ToString() } | Select-String -Pattern 'someText'`
+- find filter
+    - `Get-ChildItem -Path '.\' -Name 'README.md' -Force -Recurse -Filter "objects"`
+- find files
+    - `Get-ChildItem -Path '.\' -Name 'README.md' -Force -Recurse `
 
 - example
     ```
     (Get-ChildItem -Path '*Pax*.ps1' -Force -Recurse).Directory
-(Get-ChildItem -Path '*Pax*.ps1' -Force -Recurse).Directory | Select-String -Pattern 'Mission'
-```
+    (Get-ChildItem -Path '*Pax*.ps1' -Force -Recurse).Directory | Select-String -Pattern 'Mission'
+    ```
 
 - 
