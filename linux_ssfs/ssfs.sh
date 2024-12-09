@@ -30,9 +30,14 @@ create_folders(){
 }
 
 install_ssfs(){
+    sudo apt update 
     for app in ${apps[@]}; do
-        sudo apt update && sudo apt install $app -y
+        sudo apt install $app -y
     done
+}
+
+install_ssfs2(){
+    sudo apt update && sudo apt install ${apps[@]}
 }
 
 create_folders
