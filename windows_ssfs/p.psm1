@@ -26,6 +26,16 @@ Function o
 	git status;
 }
 
+Function oo
+{
+	git log --oneline;
+}
+
+Function ooo
+{
+	git log;
+}
+
 Function i
 {
 	git pull;
