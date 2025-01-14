@@ -61,6 +61,8 @@ Function statusall
 Export-ModuleMember -Function p;
 Export-ModuleMember -Function pp;
 Export-ModuleMember -Function o;
+Export-ModuleMember -Function oo;
+Export-ModuleMember -Function ooo;
 Export-ModuleMember -Function i;
 Export-ModuleMember -Function lsp;
 Export-ModuleMember -Function progs;
