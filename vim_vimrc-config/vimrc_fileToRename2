@@ -1,3 +1,7 @@
+" deactivate the vi compatibility, avoid issues
+set nocompatible
+filetype on
+filetype indent on
 set showmode
 set autoindent
 set tabstop=4
@@ -5,4 +9,6 @@ set expandtab
 set number
 syntax on
 colorscheme desert
-" this is a comment
+"set cursorline
+"set cursorcolumn
+" this is a comment v2

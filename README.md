@@ -95,7 +95,8 @@ vim Editor commands:
 
 ### plugins and stuff
 
--   This is an example of .vimrc
+-   This is an example of the `.vimrc` file
+    - [nice documentation](https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/)
 
 ```
 syntax on
@@ -158,6 +159,13 @@ sh -c 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubuserco
 ```
 https://github.com/junegunn/vim-plug
 ```
+
+### dotnet
+
+- [from here](https://learn.microsoft.com/en-ca/dotnet/core/install/linux-fedora?tabs=dotnet8)
+    - `sudo dnf install dotnet-sdk-8.0`
+    - `sudo dnf install aspnetcore-runtime-8.0` or `sudo dnf install dotnet-runtime-8.0`
+- [general download from ms](https://dotnet.microsoft.com/en-us/download)
 
 ### LazyVim 
 
