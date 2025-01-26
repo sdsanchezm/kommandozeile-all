@@ -382,7 +382,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - Test:
             - `ssh -T git@github.com`
             - `sudo ssh -vT git@github.com` => (in case error)
-        - also required to perform push using the new key:
+        - also is *REQUIRED* to set-url git remote parameter to be able to push, using ssh:
             - `git config --global user.email "jamecho@example.com"`
             - `git config --global user.name "jamecho"`
             - `git remote set-url origin git@github.com:jamecho/<repoName>.git`
