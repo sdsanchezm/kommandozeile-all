@@ -1,12 +1,16 @@
 #!/bin/bash
 
-# ssfs structure
+pm="dnf"
+
+# ssfs/Files structure
 folders=(
     "progs"
     "temp"
+    "bilder"
+    "apps"
     )
 
-# install apps
+# apps/packages list
 apps=(
     "git"
     "zsh"
@@ -23,22 +27,27 @@ apps=(
     "curl")
 
 
-create_folders(){
+create_ssfs(){
     for folder in ${folders[@]}; do
         mkdir ~/$folder
     done
 }
 
-install_ssfs(){
-    sudo apt update 
+install_apps(){
+    sudo ${pm} update 
     for app in ${apps[@]}; do
-        sudo apt install $app -y
+        sudo ${pm} install $app -y
     done
 }
 
-install_ssfs2(){
-    sudo apt update && sudo apt install ${apps[@]}
+install_apps2(){
+    sudo ${pm} update && sudo ${pm} install ${apps[@]}
 }
 
-create_folders
-install_ssfs
+pm_update(){
+    sudo ${pm} update
+}
+
+#create_folders
+# install_ssfs
+pm_update
