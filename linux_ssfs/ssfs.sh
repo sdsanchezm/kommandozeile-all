@@ -1,6 +1,16 @@
 #!/bin/bash
 
+# package manager
 pm="dnf"
+
+# command line short
+rclines="
+alias p='clear;pwd;exa -l;'\n
+alias o='git status'\n
+alias oo='git log'\n
+alias ooo='git log --oneline'\n
+alias i='git pull'
+"
 
 # ssfs/Files structure
 folders=(
@@ -48,6 +58,11 @@ pm_update(){
     sudo ${pm} update
 }
 
+generate_alias(){
+    echo -e ${rclines} >> ~/.zshrc
+}
+
 #create_folders
 # install_ssfs
-pm_update
+generate_alias
+# pm_update
