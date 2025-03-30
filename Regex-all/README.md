@@ -19,6 +19,27 @@
 - Si en vez de \d, usamos por ejemplo [0-2] nos encontrará solamente los dígitos de 0 a 2.
 - Podemos usar “\D” para encontrar justo lo contrario, todo lo que no son dígitos.
 
+### \G
+- Afirma la posición al final del match anterior o al inicio de la cadena para el primer match
+- Examples 
+    - `(?<=\G..)`
+        - in this case, .. indicates 2 characters
+        - the `?<=` matches
+    - `(?<=\G...)`
+        - this will only match spaces after 3 characters
+    - `(\G..)`
+        - this will match groups of 2 characters, starting from the beggining ofthe line, or end of the previous match
+
+### positive Lookbehind and negative Lookbehind 
+- positive Lookbehind 
+    - `(?<=element)match`
+    - Example
+        - `(?<=q)p` this expression will match p in valqp but will not match p in valtep
+- negative Lookbehind 
+    - `(?<!element)match`
+    - Example:
+        - `(?<!q)p` will match p in ap and bp but it will not match qp
+
 ### **Palabras:** \w
 
 - Encuentra todo lo que puede ser parte de una palabra, tanto letras (minúsculas o mayúsculas) como números.
@@ -42,7 +63,7 @@
 - `\w`	A word character: `[a-zA-Z0-9]` this could also be: `[0-9a-zA-Z]`
 - `\W`	A non-word character: `[\^\w]`
 
-- *  el asterisco es greedy (Matches zero or more occurrences.) greedy, todo) - "si no hay, todo bien, pero si hay, matcheelos todos parce"
+- *  el asterisco es greedy (Matches zero or more occurrences.) greedy, todo - "si no hay, todo bien, pero si hay, matcheelos todos parce"
 - +  es uno o mas digitos y seleccion digito por digito (Matches one or more occurrences.) (uno o mas) "tiene que haber algo, o no matchea, y matcheelos todos"
 - ?  es el cero o uno (Matches zero or one occurrence.) (cero o uno, puede o no existir) "si no hay, todo bien, pero si hay matchee uno solo parce"
 
