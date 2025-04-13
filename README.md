@@ -828,97 +828,66 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 	- `$ systemctl status NetworkManager`
     
 
-### oh-my-posh Powershell and windows Terminal
+### oh-my-posh
 
--   install Powershell:
+- Powershell and Windows Terminal oh-my-posh installation
 
-    -   Get it: [https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3)
+- Install Powershell:
+    1. Get it: [https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3)
+- Install Windows Terminal:
+    1. Get it: [https://github.com/microsoft/terminal/releases](https://github.com/microsoft/terminal/releases)
+- Install winget
+    1. [https://learn.microsoft.com/en-us/windows/package-manager/winget/](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
+- Requirements for Oh-My-Posh:
+    - Oh my posh official site: [https://ohmyposh.dev/docs/](https://ohmyposh.dev/docs/)
+    - (make sure **winget** is installed)
+- Steps to install:
+    1. Install oh-my-posh `winget install JanDeDobbeleer.OhMyPosh -s winget`
+    2. Update (if required) `winget upgrade JanDeDobbeleer.OhMyPosh -s winget`
+    3. Add it to PATH: (`$env:path`): `$env:Path += ";C:\Users\user\AppData\Local\Programs\oh-my-posh\bin"`
+    4. confirm exe location `(Get-Command oh-my-posh).Source`
+- Customize
+    1. Enable default setup `oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json"`
+    2. might need `New-Item -Path $PROFILE -Type File -Force`
+    3. Load prtofile: `. $PROFILE`
+        - when `$PROFILE`
+            - the result is: `C:\Users\<user>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`
+    4. `oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/atomic.omp.json" | Invoke-Expression`
+    5. Might need `Get-PoshThemes` to get themes
+    6. Edit the profile script: `vim $PROFILE`
+    7. get the shell what you are in: `oh-my-posh get shell`
+        - If the above error, then `New-Item -Path $PROFILE -Type File -Force`
+        - To Reaload: `. $PROFILE`
+        - Path to themes: `C:\Users\<uruser>\AppData\Local\Programs\oh-my-posh\themes\atomic.omp.json` or ...
+        - ... `$env:POSH_THEMES_PATH`
+- Fonts and icons:
+    - `oh-my-posh font install`
+    - Then select the `FiraCode Nerd Font` font and some others\
 
--   Install Windows Terminal:
+- Windows Terminal Themes (optional):
+    - General: [https://windowsterminalthemes.dev/](https://windowsterminalthemes.dev/)
+    - Dracula dark theme: [https://draculatheme.com/windows-terminal](https://draculatheme.com/windows-terminal)
+    - Material Theme: [https://github.com/julianlatest/material-windows-terminal](https://github.com/julianlatest/material-windows-terminal)
+    - to install: in WT > Settings > Open Json
 
-    -   Get it: [https://github.com/microsoft/terminal/releases](https://github.com/microsoft/terminal/releases)
+### Windows host file change
 
--   New Colors:
-
-    -   General: [https://windowsterminalthemes.dev/](https://windowsterminalthemes.dev/)
-    -   Dracula dark theme: [https://draculatheme.com/windows-terminal](https://draculatheme.com/windows-terminal)
-    -   Material Theme: [https://github.com/julianlatest/material-windows-terminal](https://github.com/julianlatest/material-windows-terminal)
-    -   to install: in WT > Settings > Open Json
-
--   Nerd fonts:
-
-    -   fonts: [https://github.com/ryanoasis/nerd-fonts/](https://github.com/ryanoasis/nerd-fonts/)
-    -   Releases: [https://github.com/ryanoasis/nerd-fonts/releases](https://github.com/ryanoasis/nerd-fonts/releases)
-    -   extract qand instal in windows
-
--   Oh-My-Posh:
-    -   Oh my posh site: [https://ohmyposh.dev/docs/](https://ohmyposh.dev/docs/)
-    -   (make sure winget is installed)
-    -   To Install `winget install JanDeDobbeleer.OhMyPosh -s winget`
-    -   to update: `winget upgrade JanDeDobbeleer.OhMyPosh -s winget`
-    -   Enable the defaul setup `oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json"`
-        -   The result after this can be run to get the theme
-    -   Run `Get-PoshThemes` to get themes and examples and instructions in what ps1 variable should change
-    -   Include the name of the theme under `C:\Users\ss\Documents\PowerShell`
-        -   It should look like this:
+- cd and cp to `win/sys32/drivers/etc`
+    - 
         ```
-        & ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\blue-owl.omp.json" --print) -join "`n"))
+        127.0.0.1       localhost
+        ::1             localhost
+        127.0.0.1  activity.windows.com
+        127.0.0.1  data.microsoft.com
+        127.0.0.1  scorecardresearch.com
+        127.0.0.1  azureedge.net
+        127.0.0.1  msftconnecttest.com
+        127.0.0.1  bingapis.com
+        127.0.0.1  assets.msn.com
+        127.0.0.1  data.msn.com
+        127.0.0.1  edge.microsoft.com
+        127.0.0.1  msedge.net
         ```
-    -   get the shell what you are in: `oh-my-posh get shell`
-    -   Edit the profile script: `notepad $PROFILE`
-        -   If the above error, then `New-Item -Path $PROFILE -Type File -Force`
-    -   To Reaload: `. $PROFILE`
-    -   Path to themes: `C:\Users\<uruser>\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json` or `$env:POSH_THEMES_PATH` (and press enter)
--   wget like in posh:
-
-    -   Example:
-
-    ```
-    $client = new-object System.Net.WebClient
-    $client.DownloadFile("http://www.example.com/file.txt","C:\temp\file.txt")
-    or
-    (new-object System.Net.WebClient).DownloadFile('http://www.example.com/file.txt','C:\temp\file.txt')
-    ```
-
--   Install fonts (must be admin):
-
-    -   `oh-my-posh font install`
-
--   directory, (cariable $PROFILE)
-
-    -   `C:\Users\thereisalotofrice\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`
-
--   ps1 file:
-
-    -   \"& ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\unicorn.omp.json" --print) -join "`n"))\"
-
--   variable `$env:POSH_THEMES_PATH`
-
-    -   value: `C:\Users\ss\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json`
-
--   theme name: `unicorn.omp.json`
-
-    -   in folder `posh-theme` in this repo
-
--   font: `FiraCode Nerd Font`
-
-### Windows ip addresses
-
-- cd and cp to 'win/sys32/drivers/etc'
-    ```
-    127.0.0.1       localhost
-    ::1             localhost
-    127.0.0.1  activity.windows.com
-    127.0.0.1  data.microsoft.com
-    127.0.0.1  scorecardresearch.com
-    127.0.0.1  azureedge.net
-    127.0.0.1  msftconnecttest.com
-    127.0.0.1  bingapis.com
-    127.0.0.1  assets.msn.com
-    127.0.0.1  data.msn.com
-    127.0.0.1  edge.microsoft.com
-    127.0.0.1  msedge.net
-    ```
 
 #### posh usefull data
 
