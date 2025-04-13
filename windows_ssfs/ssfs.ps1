@@ -25,7 +25,8 @@ $folders = @(
     "${mainFolder}\xampp",
     "${mainFolder}\MegaSyncAll",
     "${mainFolder}\GoogleDriveAll",
-    "${mainFolder}\DropboxSyncAll"
+    "${mainFolder}\DropboxSyncAll",
+    "${mainFolder}\modulesandscripts"
     )
 
 foreach ($folder in $folders) {

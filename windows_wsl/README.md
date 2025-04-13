@@ -65,6 +65,9 @@
 - `wsl --unregister <name>`
     - `wsl --unregister fedora`
 
+### wsl version
+- `wsl -v`
+
 ### Documentation
 - [https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-1---enable-the-windows-subsystem-for-linux](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-1---enable-the-windows-subsystem-for-linux)
 - [https://dev.to/bowmanjd/install-fedora-on-windows-subsystem-for-linux-wsl-4b26]
