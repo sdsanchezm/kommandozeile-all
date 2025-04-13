@@ -395,12 +395,17 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
             - `git config --global user.name "jamecho"`
             - `git remote set-url origin git@github.com:jamecho/<repoName>.git`
 
-    - Windows (normally under `C:\Users\<ryzUser>\.ssh>`)
+    - Windows (normally under `C:\Users\<ryzUser>\.ssh>`) (git bash can also be used here)
         - Generate the key
             - `ssh-keygen -t ed25519 -C "your_email@example.com"`
         - Make sure the service is up and set to manual
             - `Get-Service -Name ssh-agent | Set-Service -StartupType Manual`
             - `Start-Service ssh-agent`
+            - other useful posh service commands
+                - `Get-Service ssh-agent`
+                - `Get-Service ssh-agent | select StartType`
+                - `Get-Service -Name ssh-agent | Set-Service -StartupType Manual`
+                - `Set-Service ssh-agent -StartupType Manual`
         - Add the generated key
             - `ssh-add c:\Users\<USER>\.ssh\YourKeyFile`
 
