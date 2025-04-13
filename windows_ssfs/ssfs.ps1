@@ -36,3 +36,8 @@ foreach ($folder in $folders) {
     if (-Not (Test-Path -Path $folderPath)) { New-Item -Path $folderPath -ItemType Directory }
     Write-Host "Created folder: $folderPath"
 }
+
+
+# bloatware
+# Remove Game Bar on Windows 11
+# Get-AppxPackage -PackageTypeFilter Bundle -Name "*Microsoft.XboxGamingOverlay*" | Remove-AppxPackage
