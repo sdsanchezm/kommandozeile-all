@@ -1,6 +1,7 @@
 
-[string] $okHosts = "127.0.0.1       localhost
+[string] $okHosts = "
 ::1             localhost
+127.0.0.1       localhost
 127.0.0.1  data.microsoft.com
 127.0.0.1  activity.windows.com
 127.0.0.1  edge.microsoft.com

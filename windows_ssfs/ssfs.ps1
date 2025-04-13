@@ -2,6 +2,9 @@
 # In case errors with Execution Policy, gotta run the underneath commands in posh
 # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # Set-ExecutionPolicy Restricted -Scope CurrentUser
+# Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force;
+# Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
+# powershell.exe -noprofile -executionpolicy bypass -file .\ssfs.ps1
 
 $mainFolder = "ssfs"
 
