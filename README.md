@@ -408,6 +408,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
                 - `Set-Service ssh-agent -StartupType Manual`
         - Add the generated key
             - `ssh-add c:\Users\<USER>\.ssh\YourKeyFile`
+        - Test (same as Linux)
+        - Same Note:
+            - `.pub` to github; the private key to: `~/.ssh`
 
 3. Git stop asking for credentials:
     - `git remote set-url origin git@github.com:username/repo.git`
