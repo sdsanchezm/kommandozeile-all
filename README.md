@@ -986,11 +986,11 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - [https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/infrastructure-services/OpenSSH/]
     - [https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server]
 
-- // install openssh server
+- install openssh server
     - `sudo dnf install openssh-server`
 
-- // edit port 
-- // uncomment line
+- edit port 
+- uncomment line
 `nvim /etc/ssh/sshd_config`
 
 - // check
