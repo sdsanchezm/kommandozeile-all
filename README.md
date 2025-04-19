@@ -366,10 +366,6 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 1. [md cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-# npm common commands
-
-1. 
-
 # Github
 
 ## ssh key generation
