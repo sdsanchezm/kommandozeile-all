@@ -346,10 +346,10 @@ chgrp (change group):
 -   $ find . -type f -mtime +7 // buscan solo files (f) modificados hace mas de 7 dias (+7)
 -   // con find, tambien se puede ejecutar comandos adicionales, en este caso, cp (copy), los curly brackets son para indicar donde debe ir el nombre del archivo encontrado;
 -   // Se debe cerrar el comando con \; ... tal cual, see example as follows:
-
-```$
-find . -type f -mtime +7 -exec cp {} ./backup/ \;
-```
+- 
+    ```$
+        find . -type f -mtime +7 -exec cp {} ./backup/ \;
+    ```
 
 ### Multiple web pages intaraction
 
