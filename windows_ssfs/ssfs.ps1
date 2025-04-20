@@ -37,7 +37,15 @@ foreach ($folder in $folders) {
     Write-Host "Created folder: $folderPath"
 }
 
+# winget install
+# https://learn.microsoft.com/en-us/windows/package-manager/winget/
+# Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
 
 # bloatware
 # Remove Game Bar on Windows 11
 # Get-AppxPackage -PackageTypeFilter Bundle -Name "*Microsoft.XboxGamingOverlay*" | Remove-AppxPackage
+
+# powershell
+# https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5#install-powershell-using-winget-recommended
+# winget install --id Microsoft.PowerShell --source winget
+
