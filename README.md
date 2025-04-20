@@ -346,10 +346,10 @@ chgrp (change group):
 -   $ find . -type f -mtime +7 // buscan solo files (f) modificados hace mas de 7 dias (+7)
 -   // con find, tambien se puede ejecutar comandos adicionales, en este caso, cp (copy), los curly brackets son para indicar donde debe ir el nombre del archivo encontrado;
 -   // Se debe cerrar el comando con \; ... tal cual, see example as follows:
-
-```$
-find . -type f -mtime +7 -exec cp {} ./backup/ \;
-```
+- 
+    ```$
+        find . -type f -mtime +7 -exec cp {} ./backup/ \;
+    ```
 
 ### Multiple web pages intaraction
 
@@ -365,10 +365,6 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 # Markdown Cheatsheet
 
 1. [md cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-
-# npm common commands
-
-1. 
 
 # Github
 
@@ -408,6 +404,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
                 - `Set-Service ssh-agent -StartupType Manual`
         - Add the generated key
             - `ssh-add c:\Users\<USER>\.ssh\YourKeyFile`
+        - Test (same as Linux)
+        - Same Note:
+            - `.pub` to github; the private key to: `~/.ssh`
 
 3. Git stop asking for credentials:
     - `git remote set-url origin git@github.com:username/repo.git`
@@ -987,11 +986,11 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - [https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/infrastructure-services/OpenSSH/]
     - [https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server]
 
-- // install openssh server
+- install openssh server
     - `sudo dnf install openssh-server`
 
-- // edit port 
-- // uncomment line
+- edit port 
+- uncomment line
 `nvim /etc/ssh/sshd_config`
 
 - // check
