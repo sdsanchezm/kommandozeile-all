@@ -1,3 +1,8 @@
+# add
+# Import-Module C:\ssfs\modulesandscripts\p.psm1
+# into
+# C:\Users\<usr>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+
 Function p
 {
 	clear;
