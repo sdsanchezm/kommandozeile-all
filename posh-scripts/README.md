@@ -408,10 +408,14 @@ Download-Files -link $downloadLink
 - find files
     - `Get-ChildItem -Path '.\' -Name 'README.md' -Force -Recurse `
 
-- example
+- recursive directories
     ```
-    (Get-ChildItem -Path '*Pax*.ps1' -Force -Recurse).Directory
-    (Get-ChildItem -Path '*Pax*.ps1' -Force -Recurse).Directory | Select-String -Pattern 'Mission'
+    (Get-ChildItem -Path '*PartOfTheName*.ps1' -Force -Recurse).Directory
+    (Get-ChildItem -Path '*PartOfTheName*.ps1' -Force -Recurse).Directory | Select-String -Pattern 'Pipeline'
     ```
 
-- 
+### Identify a port of a process and close the process
+
+- `Get-NetTCPConnection -Localport 10000 | Select-Object -Property OwningProcess | ForEach-Object { Get-Process -Id $_.OwningProcess }`
+- `Stop-Process -Id 41561`
+
