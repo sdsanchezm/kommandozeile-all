@@ -940,6 +940,13 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - `-q` quiet mode
         - `-b` background
         - `-O` output file
+- wget in an url, specific fileType:
+    `wget -r -l1 -nd -np -A '02x*.pdf' http://example.com/dir/`
+        - `-r` Recursive 
+        - `-l1` - Only 1 level deep (no deep crawling)
+        - `-nd` - No directories (save files in current folder)
+        - `-np` - No parent directory traversal
+        - `-A '02x*.pdf'` - Accept only files matching 02x*.pdf
 
 ### Docker
 
