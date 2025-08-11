@@ -1045,7 +1045,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `Get-ChildItem -Recurse | Select-String -Pattern 'NODE'`
     - `Get-ChildItem -Recurse -Filter *.txt | Select-String -Pattern 'NODE'`
 
-
+- Folder Creation, Destination and Move
+    - `$x=@(11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,10);foreach($i in $x){Write-Host "folder: ${i}"; New-Item -Type Directory -Name Season_${i}; Move-Item -Path "${i}*.mkv" -Destination "Season_${i}"}`
+    - `$x=Invoke-Expression "1..25";foreach($i in $x){Write-Host "folder: ${i}"; New-Item -Type Directory -Name Season_${i}; Move-Item -Path "${i}*.mkv" -Destination "Season_${i}"}`
 
 
 
