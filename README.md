@@ -615,6 +615,20 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 -   Link: [https://ohmyz.sh/#install]
 
+### functions in .bashrc
+- add to `~/.bashrc` or `~/.zshrc`
+    - `download_mkv() { wget -r -l1 -nd -np --accept '10x*.mkv' "${1%/}/"; }`
+        - `-r` -> Recursive download (follow links)
+        - `-l1` -> Level 1 recursion (only scan the immediate directory, no deeper)
+        - `-nd` -> No directories (saves files in current folder, no subfolders)
+        - `-np` -> No parent (prevents wget from crawling up to parent directories)
+        - `--accept '10x*.mkv'`	Only download files matching 10x*.mkv
+        - Expression: "${1%/}/"
+            - `$1` -> First argument passed to the function (e.g., https://example.com/dir/)
+            - `%/` -> Removes a trailing slash (/) if present (ensures no double slashes)
+            - `/` -> Adds a trailing slash (so wget treats it as a directory)
+- usage in terminal `download_mkv https://example.com/dir/`
+
 ### curl
 
 - get request:
