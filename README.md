@@ -49,6 +49,7 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
     - [dos2unix and unix2dos](#dos2unix-and-unix2dos)
   - [SSH Server](#ssh-server)
     - [SCP](#scp)
+  - [SSH Client](#ssh-client)
   - [PowerShell](#powershell)
 
 
@@ -1000,7 +1001,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 - `unix2dos` transforms from \n ending to \r ending (codification for ending files in win)
 
 
-## SSH Server 
+## SSH Server
 
 - sources: 
     - [https://linuxconfig.org/how-to-install-start-and-connect-to-ssh-server-on-fedora-linux]
@@ -1025,6 +1026,45 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 ### SCP 
 - `scp ./data.txt kraus@192.168.100.123:/home/kraus/`
+
+## SSH Client
+
+- tested on Rocky linux 9
+
+- Install
+```bash
+sudo dnf list installed | grep openssh-server
+sudo dnf install openssh-server
+```
+- start the service
+```bash
+sudo systemctl start sshd
+sudo systemctl enable sshd
+sudo systemctl status sshd
+```
+- Add the firewall rule
+```bash
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
+```
+- check the port for ssh
+```bash
+ss -tuln | grep ssh
+```
+- ping the server/destination machine
+```bash
+ping <server-ip>
+```
+- check selinux status
+```bash
+sestatus
+```
+- deactivate selinux if required
+```bash
+sudo setenforce 0
+```
+
 
 ## PowerShell
 
