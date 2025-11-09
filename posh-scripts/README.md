@@ -407,6 +407,8 @@ Download-Files -link $downloadLink
     - `Get-ChildItem -Path '.\' -Name 'README.md' -Force -Recurse -Filter "objects"`
 - find files
     - `Get-ChildItem -Path '.\' -Name 'README.md' -Force -Recurse `
+- delete all folders (recursively) with specific name
+    - `Get-ChildItem -Path "./" -Recurse -Directory -Filter "node_modules" | Remove-Item -Recurse -Force`
 
 - recursive directories
     ```
