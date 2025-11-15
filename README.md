@@ -161,6 +161,21 @@ sh -c 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubuserco
 https://github.com/junegunn/vim-plug
 ```
 
+## bash config and oh-my-bash
+
+- Source: [https://ohmybash.nntoan.com/]
+    - `$ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"`
+- Bash completions:
+    - Install
+        - `sudo apt update`
+        - `sudo apt install bash-completion`
+    - source the completion
+        - `source /etc/bash_completion`
+    - add completion to bashrc
+        - `echo '[[ $- == *\i* ]] && source /etc/bash_completion' >> ~/.bashrc`
+    - source the .bashrc file
+        - `source ~/.bashrc`
+
 ### dotnet
 
 - [from here](https://learn.microsoft.com/en-ca/dotnet/core/install/linux-fedora?tabs=dotnet8)
