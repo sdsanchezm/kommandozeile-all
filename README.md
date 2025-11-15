@@ -10,25 +10,28 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
   - [Linux Terminal](#linux-terminal)
     - [plugins and stuff](#plugins-and-stuff)
     - [LazyVim](#lazyvim)
-- [From the course](#from-the-course)
-    - [utilidades batch:](#utilidades-batch:)
-    - [advanced bash utilities](#advanced-bash-utilities)
-    - [sed](#sed)
-    - [awk](#awk)
-    - [user linux](#user-linux)
-  - [Data processing](#data-processing)
-    - [terminal data flow](#terminal-data-flow)
-    - [users in linux o unix](#users-in-linux-o-unix)
-    - [operations](#operations)
-    - [permissions](#permissions)
-    - [find files](#find-files)
-    - [Find directories in a series of criteria](#find-directories-in-a-series-of-criteria)
-    - [Multiple web pages intaraction](#multiple-web-pages-intaraction)
+    - [neovim basic config](#neovim-basic-config)
+  - [bash config and oh-my-bash](#bash-config-and-oh-my-bash)
+    - [dotnet](#dotnet)
+  - [utilidades batch:](#utilidades-batch)
+  - [advanced bash utilities](#advanced-bash-utilities)
+  - [sed](#sed)
+  - [awk](#awk)
+  - [user linux](#user-linux)
+- [Data processing](#data-processing)
+  - [terminal data flow](#terminal-data-flow)
+  - [users in linux o unix](#users-in-linux-o-unix)
+  - [operations](#operations)
+  - [permissions](#permissions)
+  - [find files](#find-files)
+  - [Find directories in a series of criteria](#find-directories-in-a-series-of-criteria)
+  - [Multiple web pages intaraction](#multiple-web-pages-intaraction)
 - [Markdown Cheatsheet](#markdown-cheatsheet)
 - [npm common commands](#npm-common-commands)
 - [Github](#github)
-    - [ssh key generation](#ssh-key-generation)
-    - [Initialize git (locally) the correct way](#initialize-git-(locally)-the-correct-way)
+  - [ssh key generation](#ssh-key-generation)
+  - [SSH Management](#ssh-management)
+  - [Initialize git (locally) the correct way](#initialize-git-(locally)-the-correct-way)
 - [hexdump](#hexdump)
 - [hexedit](#hexedit)
 - [Adding Repos to Fedora 36](#adding-repos-to-fedora-36)
@@ -42,8 +45,8 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
     - [apache 2 in Fedora](#apache-2-in-fedora)
     - [Fedora Linux Network Manager (DOWN and UP) restarting a Net interface](#fedora-linux-network-manager-(down-and-up)-restarting-a-net-interface)
     - [oh-my-posh Powershell and windows Terminal](#oh-my-posh-powershell-and-windows-terminal)
-    - [Windows ip addresses](#windows-ip-addresses)
-      - [posh usefull data](#posh-usefull-data)
+      - [Windows ip addresses](#windows-ip-addresses)
+        - [posh usefull data](#posh-usefull-data)
     - [wget](#wget)
     - [Docker](#docker)
     - [dos2unix and unix2dos](#dos2unix-and-unix2dos)
@@ -503,6 +506,58 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `git stash pop` - brings changes from specific stash
     - `git stash push -m "message"` - save stash with a message
 
+### SSH Management
+
+- Generate a new ed25519 key:
+    ```bash
+    ssh-keygen -t ed25519 -C "jamecho"
+    ```
+
+- Install the public key on a remote server (recommended):
+    ```bash
+    ssh-copy-id -i ~/.ssh/p52_key.pub jamecho@<server-addr>
+    ```
+
+- Manually install the public key (if ssh-copy-id not available):
+    ```bash
+    cat ~/.ssh/id_ed25519.pub
+    # on the remote:
+    ssh <usr>@<server>
+    echo "public-key-content" >> ~/.ssh/authorized_keys
+    ```
+
+- Connect using a specific private key:
+    ```bash
+    ssh -i ~/.ssh/private_key jamecho@<server-addr>
+    ```
+
+- Add key to the ssh-agent (cache keys for the session):
+    ```bash
+    eval $(ssh-agent)    # starts the agent for the session
+    ssh-add ~/.ssh/p52_key
+    # verify agent process (PID will change):
+    ps aux | grep ssh-agent
+    ```
+
+- SSH config file (~/.ssh/config) example to simplify connections:
+    ```text
+    Host rpi
+        Hostname 192.168.100.x
+        User jara
+        IdentityFile ~/.ssh/jara_key
+
+    Host p52
+        Hostname 192.168.100.x
+        User marrana
+        Port 22
+        IdentityFile ~/.ssh/marrana_key
+
+    Host kop
+        Hostname my.server.example.com
+        User admin
+        Port 2222
+        IdentityFile ~/.ssh/jamecho_key
+    ```
 
 ### Initialize git (locally) the correct way
 
