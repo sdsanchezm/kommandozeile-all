@@ -408,6 +408,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
             - `git config --global user.email "jamecho@example.com"`
             - `git config --global user.name "jamecho"`
             - `git remote set-url origin git@github.com:jamecho/<repoName>.git`
+        - in case required, clear cache in local git
+            - `git credential-cache exit`
 
     - Windows (normally under `C:\Users\<ryzUser>\.ssh>`) (git bash can also be used here)
         - Generate the key
