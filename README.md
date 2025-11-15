@@ -192,9 +192,21 @@ https://github.com/junegunn/vim-plug
     - `rm -rf ~/.config/nvim/.git`
     - `nvim`
 
-# From the course
+### neovim basic config
 
-##
+- source [https://builtin.com/software-engineering-perspectives/neovim-configuration]
+- folder: `~/.config/nvim/init.vim`
+- basic:
+    ```bash
+        set showmode
+        set autoindent
+        set tabstop=4
+        set expandtab
+        set number
+        syntax on
+        colorscheme desert
+        " this is a comment
+    ```
 
 ### utilidades batch:
 
