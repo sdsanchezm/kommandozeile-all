@@ -199,16 +199,17 @@ https://github.com/junegunn/vim-plug
 
 - source [https://builtin.com/software-engineering-perspectives/neovim-configuration]
 - folder: `~/.config/nvim/init.vim`
+- folder in win: `C:\Users\<u>>\AppData\Local\nvim`
 - basic:
     ```bash
-        set showmode
-        set autoindent
-        set tabstop=4
-        set expandtab
-        set number
-        syntax on
-        colorscheme desert
-        " this is a comment
+    set showmode
+    set autoindent
+    set tabstop=4
+    set expandtab
+    set number
+    syntax on
+    colorscheme desert
+    " this is a comment
     ```
 
 ### utilidades batch:
