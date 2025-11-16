@@ -204,7 +204,11 @@ https://github.com/junegunn/vim-plug
     ```bash
     set showmode
     set autoindent
+    " Set the width of a tab
     set tabstop=4
+    " Set the number of spaces that a tab counts for
+    set shiftwidth=2
+    " Use spaces instead of tabs
     set expandtab
     set number
     syntax on
