@@ -564,6 +564,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         IdentityFile ~/.ssh/jamecho_key
     ```
 
+- *scp* will also work like this:
+    - `scp data.txt ss@192.168.2.13:/home/jamecho/.ssh`
+    - `scp p52:/home/jamecho/deblot.ubuntu.sh ./`
+
 ### Initialize git (locally) the correct way
 
 - `git init .`
