@@ -5,11 +5,12 @@ pm="dnf"
 
 # command line short
 rclines="
-alias p='clear;pwd;exa -l;'\n
+alias p='clear;exa -l;pwd'\n
 alias o='git status'\n
 alias oo='git log'\n
 alias ooo='git log --oneline'\n
 alias i='git pull'
+mkcd() { mkdir -p "$1" && cd "$1" }
 "
 
 # ssfs/Files structure
