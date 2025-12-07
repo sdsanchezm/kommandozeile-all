@@ -534,7 +534,13 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 - Connect using a specific private key and specific port:
     ```bash
     ssh -i ~/.ssh/private_key jamecho@<server-addr>
-    ssh -p 5899 -i ~/.ssh/private_key jamecho@19.2.1.<x>
+    ssh -i ~\.ssh\private_key.priv -p 5555 jamecho@19.2.x.y
+    ```
+
+- **scp** using specific port and local private key:
+
+    ```bash
+    scp -i ~\.ssh\private_key.priv -P 5555 perruncho.php jamecho@192.168.x.y:/home/airetupal/decode/perruncho.php
     ```
 
 - Add key to the ssh-agent (cache keys for the session):
