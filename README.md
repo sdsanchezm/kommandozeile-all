@@ -531,9 +531,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     echo "public-key-content" >> ~/.ssh/authorized_keys
     ```
 
-- Connect using a specific private key:
+- Connect using a specific private key and specific port:
     ```bash
     ssh -i ~/.ssh/private_key jamecho@<server-addr>
+    ssh -p 5899 -i ~/.ssh/private_key jamecho@19.2.1.<x>
     ```
 
 - Add key to the ssh-agent (cache keys for the session):
