@@ -511,6 +511,16 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `git stash pop` - brings changes from specific stash
     - `git stash push -m "message"` - save stash with a message
 
+12. clone a repo using an existing priv key (without setting it up, just copying it)
+    - `cp /path/to/the/priv_key.priv ~/.ssh/priv_key.priv`
+    - `chmod 600 ~/.ssh/priv_key.priv`
+    - `eval "$(ssh-agent -s)"`
+    - `ssh-add ~/.ssh/priv_key.priv`
+    - `ssh -T git@github.com`
+    - `git clone git@github.com:ghUser/repoName.git`
+    - might not work: `git remote set-url origin git@github.com:username/repository.git`
+
+
 ### SSH Management
 
 - Generate a new ed25519 key:
@@ -543,6 +553,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     scp -i ~\.ssh\private_key.priv -P 5555 perruncho.php jamecho@192.168.x.y:/home/airetupal/decode/perruncho.php
     ```
 
+- *scp* will also work like this:
+    - `scp data.txt ss@192.168.2.13:/home/jamecho/.ssh`
+    - `scp p52:/home/jamecho/deblot.ubuntu.sh ./`
+
 - Add key to the ssh-agent (cache keys for the session):
     ```bash
     eval $(ssh-agent)    # starts the agent for the session
@@ -570,10 +584,6 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         Port 2222
         IdentityFile ~/.ssh/jamecho_key
     ```
-
-- *scp* will also work like this:
-    - `scp data.txt ss@192.168.2.13:/home/jamecho/.ssh`
-    - `scp p52:/home/jamecho/deblot.ubuntu.sh ./`
 
 ### Initialize git (locally) the correct way
 
@@ -1127,7 +1137,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `ssh username@fedora-ip-or-hostname`
 
 ### SCP 
-- `scp ./data.txt kraus@192.168.100.123:/home/kraus/`
+- `scp ./data.txt kraus@192.168.300.123:/home/kraus/`
 
 ## SSH Client
 
