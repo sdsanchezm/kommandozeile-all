@@ -422,7 +422,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - Test:
             - `ssh -T git@github.com`
             - `sudo ssh -vT git@github.com` => (in case error)
-        - clone the repo like this (need to create the ~/.ssh/config file first):
+        - clone the repo like this with th eglobal key:
+            - `git clone git@github.com:jamechoelperro/rust-repo.git`
+        - or clone the repo like this (need to create the ~/.ssh/config file first):
             - `git clone git@github-custom:jamecho/<repo>.git`
                 - config file example:
                 ```
