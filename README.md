@@ -422,8 +422,15 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - Test:
             - `ssh -T git@github.com`
             - `sudo ssh -vT git@github.com` => (in case error)
-        - clone the repo like this:
-            - `git clone git@github.com:jamecho/<repo>.git`
+        - clone the repo like this (need to create the ~/.ssh/config file first):
+            - `git clone git@github-custom:jamecho/<repo>.git`
+                - config file example:
+                ```
+                Host github-custom
+                    Hostname github.com
+                    User jamechoelperruncho
+                    IdentityFile /home/jamecho/.ssh/id_ed25519_priv_key
+                ```
         - also is *REQUIRED* to set-url git remote parameter to be able to push, using ssh:
             - `git config --global user.email "jamecho@example.com"`
             - `git config --global user.name "jamecho"`
