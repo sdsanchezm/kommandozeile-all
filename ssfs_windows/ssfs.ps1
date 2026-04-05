@@ -12,8 +12,11 @@ $folders = @(
     "${mainFolder}\apps_downs",
     "${mainFolder}\apps_portable",
     "${mainFolder}\apps_installed",
+    "${mainFolder}\ss_notes",
+    "${mainFolder}\ss_work",
     "${mainFolder}\bilder",
     "${mainFolder}\books_all",
+    "${mainFolder}\keyboards_all",
     "${mainFolder}\cygwin64",
     "${mainFolder}\cygwin64Packages",
     "${mainFolder}\DriversForThisComputer",
@@ -26,7 +29,7 @@ $folders = @(
     "${mainFolder}\MegaSyncAll",
     "${mainFolder}\GoogleDriveAll",
     "${mainFolder}\DropboxSyncAll",
-    "${mainFolder}\modulesandscripts"
+    "${mainFolder}\ModulesAndCommonScripts"
     )
 
 foreach ($folder in $folders) {
