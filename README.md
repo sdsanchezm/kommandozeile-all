@@ -425,7 +425,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - clone the repo like this with th eglobal key:
             - `git clone git@github.com:jamechoelperro/rust-repo.git`
         - or clone the repo like this (need to create the ~/.ssh/config file first):
-            - `git clone git@github-custom:jamecho/<repo>.git`
+            - `git clone git@github-custom:jamecho/<repo>.git` << NOTE `github-custom`
                 - config file example:
                 ```
                 Host github-custom
@@ -437,6 +437,9 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
             - `git config --global user.email "jamecho@example.com"`
             - `git config --global user.name "jamecho"`
             - `git remote set-url origin git@github.com:jamecho/<repoName>.git`
+                OR
+                - `git remote set-url origin git@github-custom:jamecho/<repoName>.git` (CRUCIAL STEP)
+
         - in case required, clear cache in local git
             - `git credential-cache exit`
 
@@ -598,6 +601,11 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         User admin
         Port 2222
         IdentityFile ~/.ssh/jamecho_key
+
+    Host github-custom
+        Hostname github.com
+        User jamechoelperruncho
+        IdentityFile /home/jamecho/.ssh/id_ed25519_priv_key
     ```
 
 - `known_hosts` files can be deleted and then all ssh persmisions will be removed
