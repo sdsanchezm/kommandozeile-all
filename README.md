@@ -539,8 +539,14 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 - Install the public key on a remote server (recommended):
     ```bash
-    ssh-copy-id -i ~/.ssh/p52_key.pub jamecho@<server-addr>
+    ssh-copy-id -i ~/.ssh/p52_key.pub jamecho@<ip>
     ```
+    - powershell option:
+        ```bash
+        type $env:USERPROFILE\.ssh\ss_hlab_key.pub | ssh kraus@193.163.33.3 'cat >> .ssh/authorized_keys'
+        or
+        Get-Content $env:USERPROFILE\.ssh\ss_hlab_key.pub | ssh kraus@193.163.33.3 'cat >> .ssh/authorized_keys'
+        ```
 
 - Manually install the public key (if ssh-copy-id not available):
     ```bash
@@ -556,7 +562,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     ssh -i ~\.ssh\private_key.priv -p 5555 jamecho@19.2.x.y
     ```
 
-- **scp** using specific port and local private key:
+- **scp** using specific port and local private key (copy files):
 
     ```bash
     scp -i ~\.ssh\private_key.priv -P 5555 perruncho.php jamecho@192.168.x.y:/home/airetupal/decode/perruncho.php
@@ -593,6 +599,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         Port 2222
         IdentityFile ~/.ssh/jamecho_key
     ```
+
+- `known_hosts` files can be deleted and then all ssh persmisions will be removed
 
 ### Initialize git (locally) the correct way
 
