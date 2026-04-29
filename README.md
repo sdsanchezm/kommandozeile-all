@@ -29,6 +29,7 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
 - [Markdown Cheatsheet](#markdown-cheatsheet)
 - [Github](#github)
   - [ssh key generation](#ssh-key-generation)
+  - [Git Resolving Conflicts](#git-resolving-conflicts)
     - [SSH Management](#ssh-management)
     - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
 - [hexdump](#hexdump)
@@ -532,6 +533,112 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `git clone git@github.com:ghUser/repoName.git`
     - might not work: `git remote set-url origin git@github.com:username/repository.git`
 
+### Git Resolving Conflicts
+
+Scenarios:
+
+- scenario 1:
+    - how to resolve a branch named qwe with no latest changes from main without conflicts
+- scenario 2:
+    - how to resolve a branch named zxc with no latest changes from main with conflicts
+
+#### **Scenario 1: `qwe` (no conflicts expected)**
+
+Goal: fast, clean update
+
+##### Option A — merge (safe, simple)
+
+```bash
+git checkout main
+git pull origin main
+
+git checkout qwe
+git merge main
+git push origin qwe
+```
+
+##### Option B — rebase (clean history)
+
+```bash
+git checkout main
+git pull origin main
+
+git checkout qwe
+git rebase main
+git push --force-with-lease origin qwe
+```
+
+**When to use**
+
+* Merge → shared branches, no history rewrite
+* Rebase → personal branch, cleaner commit history
+
+#### **Scenario 2: `zxc` (conflicts expected)**
+
+Goal: controlled conflict resolution
+
+##### Option A — merge (recommended for teams)
+
+```bash
+git checkout main
+git pull origin main
+
+git checkout zxc
+git merge main
+```
+
+Resolve conflicts:
+
+```bash
+git status                # see conflicted files
+# edit files and fix markers <<<<<<< ======= >>>>>>>
+git add <file>
+git commit
+git push origin zxc
+```
+
+##### Option B — rebase (linear history, more steps)
+
+```bash
+git checkout main
+git pull origin main
+
+git checkout zxc
+git rebase main
+```
+
+On conflict:
+
+```bash
+git status
+# fix files
+git add <file>
+git rebase --continue
+```
+
+Repeat until done, then:
+
+```bash
+git push --force-with-lease origin zxc
+```
+
+##### **Useful commands during conflicts**
+
+```bash
+git diff                  # see changes
+git merge --abort        # cancel merge
+git rebase --abort       # cancel rebase
+git log --oneline --graph --all  # visualize history
+```
+
+##### **Key tips**
+
+* Always `git pull` main first
+* Prefer **merge for shared branches**, **rebase for personal branches**
+* Use `--force-with-lease` (never plain `--force`) after rebase
+* Resolve conflicts carefully—don’t blindly accept all changes
+
+---
 
 ### SSH Management
 
