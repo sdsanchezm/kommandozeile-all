@@ -57,6 +57,8 @@
 
 - `SystemPropertiesAdvanced`
 - `sysdm.cpl`
+- System Variables from cmd (PATH included)
+	- `rundll32 sysdm.cpl,EditEnvironmentVariables`
 
 ## Windows Server
 
