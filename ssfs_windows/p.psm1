@@ -6,24 +6,23 @@
 Function p
 {
 	clear;
-	ls;
-	# pwd;
- 	(pwd).Path;
+	Get-ChildItem;
+ 	(Get-Location).Path;
 }
 
 Function pp
 {
 	clear;
-	ls -directory;
-	pwd;
+	Get-ChildItem -Directory;
+	(Get-Location).Path;
 }
 
 Function progs
 {
 	clear;
-	cd C:\progs;
-	ls;
-	(pwd).Path;
+	cd C:\ssfs\progs;
+	Get-ChildItem;
+	(Get-Location).Path;
 }
 
 Function o
