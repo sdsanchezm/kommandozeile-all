@@ -29,6 +29,7 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
 - [Markdown Cheatsheet](#markdown-cheatsheet)
 - [Github](#github)
   - [ssh key generation](#ssh-key-generation)
+  - [Cherry picking](#cherry-picking)
   - [Git Resolving Conflicts](#git-resolving-conflicts)
     - [SSH Management](#ssh-management)
     - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
@@ -532,6 +533,35 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `ssh -T git@github.com`
     - `git clone git@github.com:ghUser/repoName.git`
     - might not work: `git remote set-url origin git@github.com:username/repository.git`
+
+## Cherry picking
+
+Pick commit `xxyyzz` from `main` onto `To11` (Azure DevOps). Do not push to `To11`; open a PR from a new branch.
+
+1. Fetch and checkout `To11`
+    - `git fetch origin`
+    - `git checkout To11`
+    - `git pull`
+
+2. Create and checkout a PR branch from `To11`
+    - `git checkout -b cherry-xxyyzz`
+
+3. Cherry-pick `xxyyzz` (from `main`)
+    - `git cherry-pick xxyyzz`
+
+    If conflicts:
+    - fix files, then `git add .` and `git cherry-pick --continue`
+    - or abort: `git cherry-pick --abort`
+
+4. Push the PR branch (not `To11`)
+    - `git push -u origin cherry-xxyyzz`  # `-u` sets upstream so later `git push`/`git pull` need no remote/branch.
+
+5. Create the PR into `To11` 
+    - Create the PR to merge `cherry-xxyyzz` into `To11`
+
+### Summary cherry picking
+
+- git checkout To22
 
 ### Git Resolving Conflicts
 
