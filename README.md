@@ -35,6 +35,7 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
     - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
 - [hexdump](#hexdump)
 - [hexedit](#hexedit)
+- [chntpw](#chntpw)
 - [Adding Repos to Fedora 36](#adding-repos-to-fedora-36)
   - [ytb-dl](#ytb-dl)
     - [ffmpeg mp4 extract mp3](#ffmpeg-mp4-extract-mp3)
@@ -845,6 +846,39 @@ git log --oneline --graph --all  # visualize history
     -   PgUp and PgDown
 -   open with sectors and colors
     -   hexedit -s --color [file]
+
+# chntpw
+
+basic usage for sam management
+
+- Install (examples):
+    - `sudo dnf install chntpw`
+    - `sudo apt install chntpw`
+
+- Typical flow:
+    1. Boot a Linux live environment
+    2. Mount the Ruindows partition (NTFS), e.g.:
+        - `sudo mkdir -p /mnt/win`
+        - `sudo mount /dev/sdXN /mnt/win`
+    3. Go to the registry hive directory:
+        - `cd /mnt/win/Windows/System32/config`
+    4. Edit the SAM hive with `chntpw`
+
+- List local users:
+    - `chntpw -l SAM`
+
+- Interactive mode (recommended):
+    - `chntpw -i SAM`
+
+- Edit a specific user:
+    - `chntpw -u Username SAM`
+
+- Follow instructions
+
+- Sources:
+    - [http://pogostick.net/~pnh/ntpasswd/](http://pogostick.net/~pnh/ntpasswd/)
+    - [https://manpages.ubuntu.com/manpages/focal/man8/chntpw.8.html](https://manpages.ubuntu.com/manpages/focal/man8/chntpw.8.html)
+    - man: `man chntpw`
 
 # Adding Repos to Fedora 36
 
