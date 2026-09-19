@@ -435,7 +435,10 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
                     Hostname github.com
                     User jamechoelperruncho
                     IdentityFile /home/jamecho/.ssh/id_ed25519_priv_key
+                    IdentitiesOnly yes
                 ```
+        - to restrict access to the private key: 
+            - `chmod 600 ~/ssh/key-file.priv`
         - also is *REQUIRED* to set-url git remote parameter to be able to push, using ssh:
             - `git config --global user.email "jamecho@example.com"`
             - `git config --global user.name "jamecho"`
