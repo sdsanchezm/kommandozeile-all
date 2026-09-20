@@ -30,6 +30,7 @@
 	- Group Policy Editor - Loads the Group Policy Editor to manage system policies
 - lusrmgr.msc
 	- Local Users and Groups - Interface to manage local users and user groups.
+	- Here the expiry windows password setting can be changed along with other user related settings
 - perfmon.msc
 	- Performance Monitor - Loads the Windows Performance Monitor
 - printmanagement.msc
