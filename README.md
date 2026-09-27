@@ -30,7 +30,16 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
 - [Github](#github)
   - [ssh key generation](#ssh-key-generation)
   - [Cherry picking](#cherry-picking)
-  - [Git Resolving Conflicts](#git-resolving-conflicts)
+    - [Summary cherry picking](#summary-cherry-picking)
+    - [Git Resolving Conflicts](#git-resolving-conflicts)
+      - [Scenario 1: qwe (no conflicts expected)](#scenario-1-qwe-no-conflicts-expected)
+        - [Option A — merge (safe, simple)](#option-a--merge-safe-simple)
+        - [Option B — rebase (clean history)](#option-b--rebase-clean-history)
+      - [Scenario 2: zxc (conflicts expected)](#scenario-2-zxc-conflicts-expected)
+        - [Option A — merge (recommended for teams)](#option-a--merge-recommended-for-teams)
+        - [Option B — rebase (linear history, more steps)](#option-b--rebase-linear-history-more-steps)
+        - [Useful commands during conflicts](#useful-commands-during-conflicts)
+        - [Key tips](#key-tips)
     - [SSH Management](#ssh-management)
     - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
 - [hexdump](#hexdump)
@@ -43,6 +52,10 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
     - [oh my zsh](#oh-my-zsh)
     - [functions in .bashrc](#functions-in-bashrc)
     - [curl](#curl)
+      - [get request:](#get-request)
+      - [post method:](#post-method)
+      - [Summary of the most used/important/relevant CURL commands:](#summary-of-the-most-usedimportantrelevant-curl-commands)
+      - [Curl Documentation](#curl-documentation)
     - [fish shell](#fish-shell)
     - [nvm (nodejs management)](#nvm-nodejs-management)
     - [apache 2 in Fedora](#apache-2-in-fedora)
@@ -942,11 +955,11 @@ basic usage for sam management
 
 ### curl
 
-- get request:
+#### get request:
     - `curl http://127.0.0.1:8000/test/student/ | json`
     - previous glbaly install json: `npm install -g json`
 
-- post method:
+#### post method:
     - documentation at: [https://curl.se/docs/httpscripting.html](https://curl.se/docs/httpscripting.html)
     - `curl --data "birthyear=1905&press=%20OK%20" http://www.example.com/api/someendpoint.cgi`
     - first send a POST and then GET:
@@ -999,7 +1012,7 @@ basic usage for sam management
         ```
 
 
-- Summary of the most used/important/relevant CURL commands:
+#### Summary of the most used/important/relevant CURL commands:
 
     1. **Sending a GET Request**:
         ```
@@ -1099,7 +1112,7 @@ basic usage for sam management
 
         
 
-- Documentation
+#### Curl Documentation
     - [https://reqbin.com/req/c-g5d14cew/curl-post-example]
     - Great examples: [https://gist.github.com/subfuzion/08c5d85437d5d4f00e58](https://gist.github.com/subfuzion/08c5d85437d5d4f00e58)
 
