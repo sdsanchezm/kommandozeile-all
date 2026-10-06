@@ -70,6 +70,7 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
     - [SCP](#scp)
   - [SSH Client](#ssh-client)
   - [PowerShell](#powershell)
+  - [Prettier Settings](#prettier-settings)
 
 
 ## vim editor
@@ -1426,7 +1427,41 @@ sudo setenforce 0
     - `$x=@(11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,10);foreach($i in $x){Write-Host "folder: ${i}"; New-Item -Type Directory -Name Season_${i}; Move-Item -Path "${i}*.mkv" -Destination "Season_${i}"}`
     - `$x=Invoke-Expression "1..25";foreach($i in $x){Write-Host "folder: ${i}"; New-Item -Type Directory -Name Season_${i}; Move-Item -Path "${i}*.mkv" -Destination "Season_${i}"}`
 
+## Prettier Settings
 
+- These are the most commont options for most projects. 
+- Filename: `.prettierrc`
 
+| Option | Value | Effect |
+|---|---|---|
+| `printWidth` | `80` | Wrap lines at 80 characters |
+| `tabWidth` | `2` | Two-space indentation |
+| `useTabs` | `false` | Spaces instead of tabs |
+| `semi` | `true` | Semicolons at the end of statements |
+| `singleQuote` | `true` | Single quotes for strings |
+| `quoteProps` | `"as-needed"` | Quote object keys only when required |
+| `trailingComma` | `"all"` | Trailing commas wherever valid |
+| `bracketSpacing` | `true` | Spaces inside object braces: `{ foo }` |
+| `arrowParens` | `"always"` | Parentheses around every arrow-function argument |
+| `endOfLine` | `"lf"` | Unix line endings |
+| `proseWrap` | `"preserve"` | Leave markdown wrapping as written |
 
+- `singleQuote` and `trailingComma` are unchanged. 
+- The rest match Prettier’s defaults and the existing TypeScript, so `npm run format` will not rewrite the codebase for style.
+
+```js
+{
+  "printWidth": 80,
+  "tabWidth": 4,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "proseWrap": "preserve"
+}
+```
 
