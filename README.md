@@ -451,8 +451,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
                     IdentityFile /home/jamecho/.ssh/id_ed25519_priv_key
                     IdentitiesOnly yes
                 ```
-        - to restrict access to the private key: 
-            - `chmod 600 ~/ssh/key-file.priv`
+        - to restrict access to the private key: (otherwise will get the error Permissions 0664 for '~.ssh/gh_sdsm_key' are too open)
+            - `chmod 600 ~/ssh/key-file.priv` -- this is validated ok
         - also is *REQUIRED* to set-url git remote parameter to be able to push, using ssh:
             - `git config --global user.email "jamecho@example.com"`
             - `git config --global user.name "jamecho"`
