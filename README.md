@@ -5,7 +5,6 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
 ## Table of Contents
 
 - [kommandozeile-all](#kommandozeile-all)
-  - [Table of Contents](#table-of-contents)
   - [vim editor](#vim-editor)
   - [Linux Terminal](#linux-terminal)
     - [plugins and stuff](#plugins-and-stuff)
@@ -27,11 +26,25 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
     - [Find directories in a series of criteria](#find-directories-in-a-series-of-criteria)
     - [Multiple web pages intaraction](#multiple-web-pages-intaraction)
 - [Markdown Cheatsheet](#markdown-cheatsheet)
-- [Github](#github)
+- [Git and Github](#git-and-github)
   - [ssh key generation](#ssh-key-generation)
-  - [Cherry picking](#cherry-picking)
-    - [Summary cherry picking](#summary-cherry-picking)
-    - [Git Resolving Conflicts](#git-resolving-conflicts)
+    - [github documentation](#github-documentation)
+    - [2. Setup a ssh key](#2-setup-a-ssh-key-httpsdocsgithubcomenauthenticationconnecting-to-github-with-sshgenerating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+      - [Linux key generation](#linux-key-generation)
+      - [Windows key generation](#windows-key-generation)
+    - [3. Git stop asking for credentials:](#3-git-stop-asking-for-credentials)
+    - [4. get the actual list of remotes:](#4-get-the-actual-list-of-remotes)
+    - [5. undo add in git: git restore](#5-undo-add-in-git-git-restore)
+    - [6. restore previously added file:](#6-restore-previously-added-file)
+    - [7. to show you the difference between that COMMIT's ancestor and the COMMIT](#7-to-show-you-the-difference-between-that-commits-ancestor-and-the-commit)
+    - [8. return the initial state before making changes (careful, no undo)](#8-return-the-initial-state-before-making-changes-careful-no-undo)
+    - [9. list files commited so far](#9-list-files-commited-so-far)
+    - [10. return committed file to stage (no losing changes)](#10-return-committed-file-to-stage-no-losing-changes)
+    - [11. git stash changes](#11-git-stash-changes)
+    - [12. clone a repo using an existing priv key (without setting it up, just copying it)](#12-clone-a-repo-using-an-existing-priv-key-without-setting-it-up-just-copying-it)
+  - [Cherry picking process](#cherry-picking-process)
+  - [Summary cherry picking](#summary-cherry-picking)
+    - [Git Resolving Conflicts in a cherry pick](#git-resolving-conflicts-in-a-cherry-pick)
       - [Scenario 1: qwe (no conflicts expected)](#scenario-1-qwe-no-conflicts-expected)
         - [Option A — merge (safe, simple)](#option-a--merge-safe-simple)
         - [Option B — rebase (clean history)](#option-b--rebase-clean-history)
@@ -40,8 +53,10 @@ _Description:_ Summary of command Line and helpful tools to improve efficiency a
         - [Option B — rebase (linear history, more steps)](#option-b--rebase-linear-history-more-steps)
         - [Useful commands during conflicts](#useful-commands-during-conflicts)
         - [Key tips](#key-tips)
-    - [SSH Management](#ssh-management)
-    - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
+  - [Initialize git (locally) the correct way](#initialize-git-locally-the-correct-way)
+  - [SSH Management](#ssh-management)
+    - [scp using specific port and local private key (copy files):](#scp-using-specific-port-and-local-private-key-copy-files)
+    - [SSH config file](#ssh-config-file)
 - [hexdump](#hexdump)
 - [hexedit](#hexedit)
 - [chntpw](#chntpw)
@@ -419,17 +434,17 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
 
 1. [md cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-# Github
+# Git and Github
 
 ## ssh key generation
 
-1. documentation
+### github documentation
     - [https://docs.github.com/en/get-started/quickstart/fork-a-repo]
     - [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux]
 
-2. Setup a ssh key: [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
+### 2. Setup a ssh key: [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
 
-    - Linux
+#### Linux key generation
         - `$ ssh-keygen -t ed25519 -C "useremail@example.com"`
         - `$ eval "$(ssh-agent -s)"`
         - `$ ssh-add ~/.ssh/id_ed25519`
@@ -463,7 +478,8 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - in case required, clear cache in local git
             - `git credential-cache exit`
 
-    - Windows (normally under `C:\Users\<ryzUser>\.ssh>`) (git bash can also be used here)
+#### Windows key generation
+        - in windows (normally under `C:\Users\<ryzUser>\.ssh>`) (git bash can also be used here)
         - Generate the key
             - `ssh-keygen -t ed25519 -C "your_email@example.com"`
         - Make sure the service is up and set to manual
@@ -480,7 +496,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - Same Note:
             - `.pub` to github; the private key to: `~/.ssh`
 
-3. Git stop asking for credentials:
+### 3. Git stop asking for credentials:
     - `git remote set-url origin git@github.com:username/repo.git`
     - `git config --global credential.helper store`
     - `git config --global credential.helper cache`
@@ -493,22 +509,22 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - `git config --list --show-origin`
         - `git config --list`
 
-4. get the actual list of remotes:
+### 4. get the actual list of remotes:
     - `git remote -v`
     - `git branch -r`
     - `git branch --all`
     - `git branch -a`
 
-5. undo `add` in git:
+### 5. undo `add` in git: git restore
     - `git restore --staged pFinal/migrations/0001_initial.py`
         - `git remote set-url origin git@github.com:sdsanchezm/kommandozeile-all.git`
 
-6. restore previously added file:
+### 6. restore previously added file:
     - `$ git restore --staged directory_uild/maininUnit/.vscode/`
     - Restore not stated file:
         - `git restore <file>`
 
-7. to show you the difference between that COMMIT's ancestor and the COMMIT
+### 7. to show you the difference between that COMMIT's ancestor and the COMMIT
     - `git diff COMMIT~ COMMIT`
     - To show the COMMITs data
         - `git show COMMIT`
@@ -517,21 +533,21 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - also
         - `git diff COMMIT`
 
-8. return the initial state before making changes (careful, no undo)
+### 8. return the initial state before making changes (careful, no undo)
     - `git checkout -- .`
 
-9. list files commited so far
+### 9. list files commited so far
     - `git ls-tree --name-only -r <branch_name>`
     - `git ls-tree --name-only <branch> <dir>`
         - example: 
             - `git ls-tree --name-only main ./`
 
-10. return committed file to stage (no losing changes)
+### 10. return committed file to stage (no losing changes)
     - `git reset --soft HEAD^` or `git reset --soft HEAD~1`
     - since git 2.23 
         - `git restore --staged ./file`
 
-11. git stash changes
+### 11. git stash changes
 - Examples
     - `git stash push -m "message"` - save stash with a message
     - `git stash apply <name>` - or (from above) indicate the stash name
@@ -542,7 +558,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `git stash drop` - drop the stash changes
     - `git stash clear` - removes all stashes
 
-12. clone a repo using an existing priv key (without setting it up, just copying it)
+### 12. clone a repo using an existing priv key (without setting it up, just copying it)
     - `cp /path/to/the/priv_key.priv ~/.ssh/priv_key.priv`
     - `chmod 600 ~/.ssh/priv_key.priv`
     - `eval "$(ssh-agent -s)"`
@@ -551,7 +567,7 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
     - `git clone git@github.com:ghUser/repoName.git`
     - might not work: `git remote set-url origin git@github.com:username/repository.git`
 
-## Cherry picking
+## Cherry picking process
 
 Pick commit `xxyyzz` from `main` onto `To11` (Azure DevOps). Do not push to `To11`; open a PR from a new branch.
 
@@ -576,11 +592,11 @@ Pick commit `xxyyzz` from `main` onto `To11` (Azure DevOps). Do not push to `To1
 5. Create the PR into `To11` 
     - Create the PR to merge `cherry-xxyyzz` into `To11`
 
-### Summary cherry picking
+## Summary cherry picking
 
 - git checkout To22
 
-### Git Resolving Conflicts
+### Git Resolving Conflicts in a cherry pick
 
 Scenarios:
 
@@ -685,86 +701,7 @@ git log --oneline --graph --all  # visualize history
 * Use `--force-with-lease` (never plain `--force`) after rebase
 * Resolve conflicts carefully—don’t blindly accept all changes
 
----
-
-### SSH Management
-
-- Generate a new ed25519 key:
-    ```bash
-    ssh-keygen -t ed25519 -C "jamecho"
-    ```
-
-- Install the public key on a remote server (recommended):
-    ```bash
-    ssh-copy-id -i ~/.ssh/p52_key.pub jamecho@<ip>
-    ```
-    - powershell option:
-        ```bash
-        type $env:USERPROFILE\.ssh\ss_hlab_key.pub | ssh kraus@193.163.33.3 'cat >> .ssh/authorized_keys'
-        or
-        Get-Content $env:USERPROFILE\.ssh\ss_hlab_key.pub | ssh kraus@193.163.33.3 'cat >> .ssh/authorized_keys'
-        ```
-
-- Manually install the public key (if ssh-copy-id not available):
-    ```bash
-    cat ~/.ssh/id_ed25519.pub
-    # on the remote:
-    ssh <usr>@<server>
-    echo "public-key-content" >> ~/.ssh/authorized_keys
-    ```
-
-- Connect using a specific private key and specific port:
-    ```bash
-    ssh -i ~/.ssh/private_key jamecho@<server-addr>
-    ssh -i ~\.ssh\private_key.priv -p 5555 jamecho@19.2.x.y
-    ```
-
-- **scp** using specific port and local private key (copy files):
-
-    ```bash
-    scp -i ~\.ssh\private_key.priv -P 5555 perruncho.php jamecho@192.168.x.y:/home/airetupal/decode/perruncho.php
-    ```
-
-- *scp* will also work like this:
-    - `scp data.txt ss@192.168.2.13:/home/jamecho/.ssh`
-    - `scp p52:/home/jamecho/deblot.ubuntu.sh ./`
-
-- Add key to the ssh-agent (cache keys for the session):
-    ```bash
-    eval $(ssh-agent)    # starts the agent for the session
-    ssh-add ~/.ssh/p52_key
-    # verify agent process (PID will change):
-    ps aux | grep ssh-agent
-    ```
-
-- SSH config file (~/.ssh/config) example to simplify connections:
-    ```text
-    Host rpi
-        Hostname 192.168.100.x
-        User jara
-        IdentityFile ~/.ssh/jara_key
-
-    Host p52
-        Hostname 192.168.100.x
-        User marrana
-        Port 22
-        IdentityFile ~/.ssh/marrana_key
-
-    Host kop
-        Hostname my.server.example.com
-        User admin
-        Port 2222
-        IdentityFile ~/.ssh/jamecho_key
-
-    Host github-custom
-        Hostname github.com
-        User jamechoelperruncho
-        IdentityFile /home/jamecho/.ssh/id_ed25519_priv_key
-    ```
-
-- `known_hosts` files can be deleted and then all ssh persmisions will be removed
-
-### Initialize git (locally) the correct way
+## Initialize git (locally) the correct way
 
 - `git init .`
 - `git commit --allow-empty -m "Initial commit"`
@@ -805,6 +742,87 @@ git log --oneline --graph --all  # visualize history
     - `git add [FILE]`
     - `git commit --amend`
     - `git push --force`
+
+## SSH Management
+
+- Generate a new ed25519 key:
+    ```bash
+    ssh-keygen -t ed25519 -C "jamecho"
+    ```
+
+- Install the public key on a remote server (recommended):
+    ```bash
+    ssh-copy-id -i ~/.ssh/p52_key.pub jamecho@<ip>
+    ```
+    - powershell option:
+        ```bash
+        type $env:USERPROFILE\.ssh\ss_hlab_key.pub | ssh kraus@193.163.33.3 'cat >> .ssh/authorized_keys'
+        or
+        Get-Content $env:USERPROFILE\.ssh\ss_hlab_key.pub | ssh kraus@193.163.33.3 'cat >> .ssh/authorized_keys'
+        ```
+
+- Manually install the public key (if ssh-copy-id not available):
+    ```bash
+    cat ~/.ssh/id_ed25519.pub
+    # on the remote:
+    ssh <usr>@<server>
+    echo "public-key-content" >> ~/.ssh/authorized_keys
+    ```
+
+- Connect using a specific private key and specific port:
+    ```bash
+    ssh -i ~/.ssh/private_key jamecho@<server-addr>
+    ssh -i ~\.ssh\private_key.priv -p 5555 jamecho@19.2.x.y
+    ```
+
+### **scp** using specific port and local private key (copy files):
+
+    ```bash
+    scp -i ~\.ssh\private_key.priv -P 5555 perruncho.php jamecho@192.168.x.y:/home/airetupal/decode/perruncho.php
+    ```
+
+- *scp* will also work like this:
+    - `scp data.txt ss@192.168.2.13:/home/jamecho/.ssh`
+    - `scp p52:/home/jamecho/deblot.ubuntu.sh ./`
+
+- Add key to the ssh-agent (cache keys for the session):
+    ```bash
+    eval $(ssh-agent)    # starts the agent for the session
+    ssh-add ~/.ssh/p52_key
+    # verify agent process (PID will change):
+    ps aux | grep ssh-agent
+    ```
+
+### SSH config file
+
+- SSH config file (~/.ssh/config) example to simplify connections:
+```bash
+Host rpi
+    Hostname 192.168.100.x
+    User jara
+    IdentityFile ~/.ssh/jara_key
+
+Host p52
+    Hostname 192.168.100.x
+    User marrana
+    Port 22
+    IdentityFile ~/.ssh/marrana_key
+
+Host kop
+    Hostname my.server.example.com
+    User admin
+    Port 2222
+    IdentityFile ~/.ssh/jamecho_key
+
+Host github-custom
+    Hostname github.com
+    User jamechoelperruncho
+    IdentityFile /home/jamecho/.ssh/id_ed25519_priv_key
+```
+- **NOTE:** when using config for github, clone the repo using this structure
+- `git clone git@github-custom:jamecho/<repo>.git` << NOTE `github-custom`
+- `known_hosts` files can be deleted and then all ssh persmisions will be removed
+
 
 # hexdump
 
