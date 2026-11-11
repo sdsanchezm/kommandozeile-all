@@ -20,6 +20,8 @@
 	- Device Manager - Opens the Device Manager to manage hardware and devices.
 - devmoderunasuserconfig.msc
 	- User Manager - Complete customization of the start menu items and the taskbar.
+- dfrg.msc
+	- Disk Defragmenter - Windows 2000, Windows XP, and Windows Server 2003. Later Windows opens Disk Defragmenter with `dfrgui`.
 - diskmgmt.msc
 	- Disk Management - Opens Disk Management to administrate connected storage devices.
 - eventvwr.msc
@@ -31,6 +33,10 @@
 - lusrmgr.msc
 	- Local Users and Groups - Interface to manage local users and user groups.
 	- Here the expiry windows password setting can be changed along with other user related settings
+- ntmsmgr.msc
+	- Removable Storage - Manage libraries, drives, media, and media pools. Windows XP and Windows Server 2003.
+- ntmsoprq.msc
+	- Removable Storage Operator Requests - Complete or refuse operator requests for removable media. Windows XP and Windows Server 2003.
 - perfmon.msc
 	- Performance Monitor - Loads the Windows Performance Monitor
 - printmanagement.msc
@@ -61,14 +67,38 @@
 - System Variables from cmd (PATH included)
 	- `rundll32 sysdm.cpl,EditEnvironmentVariables`
 
+### Disk Cleanup
+
+`cleanmgr` is Disk Cleanup (`cleanmgr.exe`), not an `.msc` console. It clears unnecessary files from a disk.
+
+- `cleanmgr`
+- `cleanmgr /d C`
+	- Clean drive C. Not used together with `/sagerun`
+- `cleanmgr /sageset:n`
+	- Open the settings dialog and store the selection as set `n` (`0` through `9999`)
+- `cleanmgr /sagerun:n`
+	- Run the tasks saved for set `n` against every drive
+- `cleanmgr /tuneup:n`
+	- Run `/sageset` and `/sagerun` for the same `n`
+- `cleanmgr /lowdisk`
+	- Run with the default settings
+- `cleanmgr /verylowdisk`
+	- Run with the default settings and no prompts
+- `cleanmgr /autoclean`
+	- Delete files left behind after a Windows upgrade
+
 ## Windows Server
 
 .MSC file
 Description
 - adfs.msc
 	- Active Directory Federation Services
+- admgmt.msc
+	- Active Directory Management - Domains and Trusts, Sites and Services, DNS, and Active Directory Users and Computers. Windows Server 2003 Administration Tools Pack.
 - AdRmsAdmin.msc
 	- Active Directory Rights Management Services
+- adrms.msc
+	- Active Directory Rights Management Services - Documented snap-in name. The AD RMS role installs `AdRmsAdmin.msc`.
 - adsiedit.msc
 	- ADSI Edit
 - certim.msc
@@ -89,6 +119,8 @@ Description
 	- IPSec Performance Monitor
 - daisatapmsc
 	- ISATAP Performance Monitor
+- dfsgui.msc
+	- Distributed File System - Windows Server 2003. Windows Server 2003 R2 and later use `dfsmgmt.msc`.
 - dfsmgmt.msc
 	- DFS Management
 - dhcpmgmt.msc
@@ -119,6 +151,8 @@ Description
 	- Internet Information Services Manager
 - iis6.msc
 	- Internet Information Services Manager 6.0
+- ipaddrmgmt.msc
+	- IP Address Management - WINS, DNS, and DHCP in one console. Windows Server 2003 Administration Tools Pack.
 - lsdiag.msc
 	- RD Licensing Diagnoser
 - napclcfg.msc
@@ -131,16 +165,22 @@ Description
 	- Online Responder
 - pkiview.msc
 	- Enterprise PKI
+- pkmgmt.msc
+	- PKI Management - Certification authorities and certificate templates. Windows Server 2003 Administration Tools Pack.
 - remoteprograms.msc
 	- RemoteApp Manager
 - rrasmgmt.msc
 	- Routing and Remote Access
+- rsadmin.msc
+	- Remote Storage Administration - Windows 2000 Server and Windows Server 2003.
 - sanmmc.msc
 	- Storage Manager for SANs
 - sbmgr.msc
 	- Remote Desktop Connection Manager
 - scanmanagement.msc
 	- Scan Management
+- schmmgmt.msc
+	- Active Directory Schema - Register the snap-in with `regsvr32 schmmgmt.dll`, then save the console as `schmmgmt.msc`.
 - servermanager.msc
 	- Server Manager
 - storagemgmt.msc
@@ -151,12 +191,16 @@ Description
 	- Telephony
 - tsadmin.msc
 	- Remote Desktop Services Manager
+- tscc.msc
+	- Terminal Services Configuration - Windows Server 2003. Later releases use `tsconfig.msc`.
 - tsconfig.msc
 	- Remote Desktop Session Host Configuration
 - tsgateway.msc
 	- RD Gateway Manager
 - tsmmc.msc
 	- Remote Desktops
+- uddi.msc
+	- UDDI Services
 - virtmgmt.msc
 	- Hyper-V Manager
 - wbadmin.msc
