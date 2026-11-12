@@ -4,6 +4,23 @@
 	- regular user: [enter]
 	- admin user: [ctrl] + [shift] + [enter]
 
+## Table of Contents
+
+- [Windows Management Console (msc) Commands](#windows-management-console-msc-commands)
+  - [Windows user](#windows-user)
+    - [Location](#location)
+    - [Advance Properties](#advance-properties)
+    - [Disk Cleanup](#disk-cleanup)
+  - [Windows Server](#windows-server)
+  - [Windows Debloat Considerations using powershell](#windows-debloat-considerations-using-powershell)
+    - [List installed apps (current user)](#list-installed-apps-current-user)
+    - [Remove an app for the current user](#remove-an-app-for-the-current-user)
+    - [Provisioned packages (new users / reinstalls)](#provisioned-packages-new-users--reinstalls)
+    - [Optional features and capabilities](#optional-features-and-capabilities)
+    - [Safer defaults / what to leave alone](#safer-defaults--what-to-leave-alone)
+    - [Reinstall a Store app later](#reinstall-a-store-app-later)
+    - [Related cleanup (not Appx)](#related-cleanup-not-appx)
+
 ## Windows user
 
 - azman.msc
@@ -215,3 +232,88 @@ Description
 	- Windows System Resource Manager
 - wsus.msc
 	- Update Services
+
+## Windows Debloat Considerations using powershell
+
+Windows 11 ships with many preinstalled Store / UWP apps. Debloat usually means removing or disabling apps you do not use. Prefer listing first, remove selectively, and keep a restore path.
+
+- Run PowerShell as Administrator for machine-wide / provisioned package changes
+- Create a restore point before bulk removals:
+	- `Checkpoint-Computer -Description "Before debloat" -RestorePointType MODIFY_SETTINGS`
+
+### List installed apps (current user)
+
+- All Appx packages for the current user:
+	- `Get-AppxPackage | Select-Object Name, PackageFullName | Sort-Object Name`
+- Filter by name:
+	- `Get-AppxPackage *xbox*`
+	- `Get-AppxPackage *bing*`
+	- `Get-AppxPackage *teams*`
+	- `Get-AppxPackage *clipchamp*`
+	- `Get-AppxPackage *copilot*`
+
+### Remove an app for the current user
+
+- Example (Xbox app):
+	- `Get-AppxPackage *XboxApp* | Remove-AppxPackage`
+- Example (common consumer packages; adjust names after listing):
+	- `Get-AppxPackage *BingNews* | Remove-AppxPackage`
+	- `Get-AppxPackage *BingWeather* | Remove-AppxPackage`
+	- `Get-AppxPackage *GetHelp* | Remove-AppxPackage`
+	- `Get-AppxPackage *Microsoft.Getstarted* | Remove-AppxPackage`
+	- `Get-AppxPackage *Microsoft.MicrosoftSolitaireCollection* | Remove-AppxPackage`
+	- `Get-AppxPackage *Microsoft.WindowsFeedbackHub* | Remove-AppxPackage`
+	- `Get-AppxPackage *Microsoft.YourPhone* | Remove-AppxPackage`
+	- `Get-AppxPackage *Microsoft.ZuneMusic* | Remove-AppxPackage`
+	- `Get-AppxPackage *Microsoft.ZuneVideo* | Remove-AppxPackage`
+	- `Get-AppxPackage *Clipchamp* | Remove-AppxPackage`
+	- `Get-AppxPackage *MicrosoftTeams* | Remove-AppxPackage`
+	- `Get-AppxPackage *Microsoft.GamingApp* | Remove-AppxPackage`
+
+### Provisioned packages (new users / reinstalls)
+
+Apps provisioned for the image come back for new local accounts unless also removed from the provisioned list.
+
+- List provisioned packages:
+	- `Get-AppxProvisionedPackage -Online | Select-Object DisplayName, PackageName | Sort-Object DisplayName`
+- Remove a provisioned package (admin):
+	- `Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*BingNews*" | Remove-AppxProvisionedPackage -Online`
+
+### Optional features and capabilities
+
+- List optional features:
+	- `Get-WindowsOptionalFeature -Online | Where-Object State -eq Enabled | Select-Object FeatureName`
+- Disable an optional feature (example):
+	- `Disable-WindowsOptionalFeature -Online -FeatureName WindowsMediaPlayer -NoRestart`
+- List installed capabilities:
+	- `Get-WindowsCapability -Online | Where-Object State -eq Installed | Select-Object Name`
+- Remove a capability (example: OpenSSH client if unused):
+	- `Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0`
+
+### Safer defaults / what to leave alone
+
+- Prefer not removing without a clear reason:
+	- Microsoft Store (`Microsoft.WindowsStore`) — needed to reinstall Store apps
+	- App Installer / Winget-related packages
+	- Windows Security / Defender UI packages
+	- Photos, Calculator, Notepad, Terminal (or keep Terminal if you use it)
+	- Xbox Identity Provider / Gaming Services if you use Xbox / Game Pass / some games
+- Feature updates and major Windows 11 upgrades can re-provision apps; re-check after upgrades
+- Third-party “one-click debloat” scripts vary in quality; review every removal before running them
+
+### Reinstall a Store app later
+
+- From Microsoft Store, or with winget when available:
+	- `winget search <app-name>`
+	- `winget install <package-id>`
+- Or re-register Store apps for the current user (recovery when Store apps break):
+	- `Get-AppxPackage -AllUsers Microsoft.WindowsStore | ForEach-Object { Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppxManifest.xml" }`
+
+### Related cleanup (not Appx)
+
+- Disk Cleanup (see [Disk Cleanup](#disk-cleanup)): `cleanmgr`
+- Temporary files:
+	- `Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue`
+- Startup apps UI:
+	- `Taskmgr` → Startup apps
+	- or Settings → Apps → Startup
