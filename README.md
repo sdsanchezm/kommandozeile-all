@@ -548,15 +548,66 @@ $ wget pagina.com/file.pdf // guarda el file pdf en tu laptop
         - `git restore --staged ./file`
 
 ### 11. git stash changes
-- Examples
-    - `git stash push -m "message"` - save stash with a message
-    - `git stash apply <name>` - or (from above) indicate the stash name
-    - `git stash list` - list stash
-    - `git stash` - save in stash
-    - `git stash apply` - bring up those changes
-    - `git stash pop` - brings changes from specific stash
-    - `git stash drop` - drop the stash changes
-    - `git stash clear` - removes all stashes
+
+Temporarily shelve local work so you can switch branches / pull, then restore it later.
+
+- Save current tracked changes (short form of `git stash push`):
+    - `git stash`
+    - `git stash push -m "wip: login form validation"`
+
+- Include untracked files (new files not yet `git add`ed):
+    - `git stash push -u -m "wip: includes new files"`
+    - or: `git stash -u`
+
+- Include ignored files too (rare; use carefully):
+    - `git stash push -a -m "wip: all incl ignored"`
+
+- Stash only specific paths:
+    - `git stash push -m "wip: api only" -- src/api/`
+    - `git stash push -m "wip: one file" -- README.md`
+
+- List stashes (newest first; refs look like `stash@{0}`):
+    - `git stash list`
+    - example output:
+        - `stash@{0}: On main: wip: login form validation`
+        - `stash@{1}: On feature/x: wip: includes new files`
+
+- Inspect a stash before applying:
+    - `git stash show` — summary of latest stash
+    - `git stash show -p` — full patch of latest stash
+    - `git stash show -p stash@{1}` — full patch of a specific stash
+    - or numeric index (modern Git): `git stash show -p 1`
+    - **Note:** Here, patch means the full diff of that stash — every changed hunk (+ / - lines), not just the short file summary.
+
+- Restore without removing from the stash list:
+    - `git stash apply` — apply latest (`stash@{0}`)
+    - `git stash apply 0` — same as `stash@{0}` (numeric index; modern Git)
+    - `git stash apply 1` — same as `stash@{1}`
+    - `git stash apply stash@{1}` — full ref form
+    - `git stash apply --index 0` — also try to restore the staging area
+    - PowerShell note: quote the ref form → `git stash apply "stash@{0}"` (`@{}` is special in PowerShell)
+
+- Restore and remove that stash entry:
+    - `git stash pop` — pop latest
+    - `git stash pop 0` — pop latest via numeric index
+    - `git stash pop 1` / `git stash pop stash@{1}` — pop a specific entry
+    - note: if conflicts occur during `pop`, the stash is often kept; fix conflicts, then `git stash drop` when done
+
+- Drop / clear:
+    - `git stash drop` — delete latest stash
+    - `git stash drop 0` / `git stash drop stash@{0}` — delete a specific stash
+    - `git stash clear` — delete **all** stashes (no undo)
+
+- Create a branch from a stash (useful when the stash does not apply cleanly on the current branch):
+    - `git stash branch recover-wip 0`
+    - or: `git stash branch recover-wip stash@{0}`
+    - creates/checks out `recover-wip` at the commit where the stash was made, then applies and drops that stash
+
+- Typical flow:
+    1. `git stash push -u -m "wip: before pull"`
+    2. `git pull` (or switch branch)
+    3. `git stash list`
+    4. `git stash pop` (or `git stash apply 0` if you want to keep a copy in the stash list)
 
 ### 12. clone a repo using an existing priv key (without setting it up, just copying it)
     - `cp /path/to/the/priv_key.priv ~/.ssh/priv_key.priv`
